@@ -50,13 +50,6 @@ Tanto o server quanto o client estão configurados para rodar com ```Nodemon```,
 Erros lint apareceção no console.
 
 
-### `yarn/npm run  start`
-
-Runs the server in the development mode.<br/>
-The server can be reached at [http://localhost:5000](http//localhost:5000).
-
-The server is not run at nodemon env, and it will need to be restarted at any changes.
-
 ### `yarn/npm run build`
 
 Constroi o app Client para produção na pasta `build`.<br />
@@ -100,9 +93,7 @@ Roda a aplicação apenas Client Side.
 <!-- Adicionar gerador automatico de imagem dos contribuidores caso o repositório vire público -->
 
 
-#
 
-[Footer](https://github.com/navendu-pottekkat/awesome-readme/blob/master/fooooooter.png)
 
 
 
