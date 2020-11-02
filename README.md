@@ -1,17 +1,53 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<!-- This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app). -->
 
-## Available Scripts
 
-In the project directory, you can run:
+# Virtuaula - Plataforma de EaD
+
+![GitHub release (latest by date including pre-releases)](https://img.shields.io/github/v/release/pw-2020qs/Virtuaula?include_prereleases)
+
+![GitHub last commit](https://img.shields.io/github/last-commit/pw-2020qs/Virtuaula)
+
+![GitHub issues](https://img.shields.io/github/issues-raw/pw-2020qs/Virtuaula)
+
+![GitHub pull requests](https://img.shields.io/github/issues-pr/pw-2020qs/Virtuaula)
+
+![GitHub All Releases](https://img.shields.io/github/downloads/pw-2020qs/Virtuaula/total)
+
+![GitHub](https://img.shields.io/github/license/pw-2020qs/Virtuaula)
+
+
+<!-- 
+# Demo
+
+Aqui será adicionado um video ou gif demo do projeto
+-->
+
+# Indice
+
+- [Início](#Virtuaula - Plataforma de EaD)
+- [Indice](#Indice)
+- [Instalação](#Instalação)
+- [Desenvolvimento](#Dev)
+- [Uso](#Uso)
+- [Contribuidores](#Contribuidores)
+
+
+ # Instalação 
+ [Voltar](#Indice)
+
+
+### `npm run instal`
+
+Instalará as dependências do lado Client e Server.
 
 ### `yarn/npm run dev`
 
-Runs the client app and the server in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view client it in the browser.
-The server can be reached at [http://localhost:5000](http//localhost:5000).
+Rodda o app em modo de desenvolvimento nos lados client e server.<br/>
+De modo default ```create-react-app``` roda o webpack-dev na porta [http://localhost:3000](http://localhost:3000), abra o navegador nesta porta para acessar o Client.
+O servidor está configurado para rodar na porta [http://localhost:5000](http//localhost:5000).
 
-Both the server and client are run with Nodemon and will reload if you make edits.<br />
-You will also see any lint errors in the console.
+Tanto o server quanto o client estão configurados para rodar com ```Nodemon```, portanto alterações serão atualizadas automaticamente.<br />
+Erros lint apareceção no console.
 
 
 ### `yarn/npm run  start`
@@ -21,21 +57,57 @@ The server can be reached at [http://localhost:5000](http//localhost:5000).
 
 The server is not run at nodemon env, and it will need to be restarted at any changes.
 
-### `npm/yarn build`
+### `yarn/npm run build`
 
-Builds the client app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Constroi o app Client para produção na pasta `build`.<br />
+<!-- It correctly bundles React in production mode and optimizes the build for the best performance.
 
 The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+Your app is ready to be deployed! -->
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+ # Dev 
+ [Voltar](#Indice)
+ 
+### `yarn/npm run server`
+
+Roda a app em Server side.
+
+### `yarn/npm run client`
+
+Roda a aplicação apenas Client Side.
+
+
+`API`
+|  URL | Methodo  | pacote | arquivo |  descrição |
+|---|---|---|---|---|
+|   |   |   |   |   |
+|   |   |   |   |   |
+|   |   |   |   |   |
+
+
+ # Uso 
+ [Voltar](#Indice)
+
+
+<!-- Adicionar informações sobre o uso do App -->
 
 
 
+ # Contribuidores 
+ [Voltar](#Indice)
+
+
+<!-- Adicionar gerador automatico de imagem dos contribuidores caso o repositório vire público -->
+
+
+#
+
+[Footer](https://github.com/navendu-pottekkat/awesome-readme/blob/master/fooooooter.png)
 
 
 
+# Outras Informações 
+[Voltar](#Indice)
 
 
 
