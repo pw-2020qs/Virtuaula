@@ -36,9 +36,13 @@ Aqui será adicionado um video ou gif demo do projeto
  [Voltar](#Indice)
 
 
-### `npm run instal`
+### `npm install`
 
-Instalará as dependências do lado Client e Server.
+Instalará as depmpendências do lado Server.
+
+### `npm run install`
+
+Instalará as dependências do lado Client.
 
 ### `yarn/npm run dev`
 
