@@ -9,7 +9,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 
-app.get('/api-express/hello', (req, res) => {
+app.get('/api/hello', (req, res) => {
   res.send({ express: 'Hello From Express' });
 });
 
@@ -26,7 +26,7 @@ if (process.env.NODE_ENV === 'production') {
     
   // Handle React routing, return all requests to React app
   app.get('*', function(req, res) {
-    res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+    res.sendFile(path.join(__dirname, 'client/build', 'landing.html'));
   });
 }
 
