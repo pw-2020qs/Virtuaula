@@ -10,7 +10,6 @@
     "dev": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\"",
     "start": "node dist/server.js",
     "heroku-postbuild": "cd client && npm ci && npm install --only=dev --no-shrinkwrap && npm run build && mv build ../dist/client",
-    "heroku-cleanup":"npm run start",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
