@@ -6,10 +6,11 @@
   "scripts": {
     "client": "cd client && npm run start",
     "build": "cd client && npm run build",
+    "build-hero": "cd client && npm run build-hero",
     "server": "tsc-watch --onSuccess \"npm run start\" ",
     "dev": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\"",
     "start": "node dist/server.js",
-    "heroku-postbuild": "cd client && npm ci && npm install --only=dev --no-shrinkwrap && npm run build ",
+    "heroku-postbuild": "tsc && cd client && npm ci && npm install --only=dev --no-shrinkwrap && npm run build-hero ",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
