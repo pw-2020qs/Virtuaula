@@ -7,6 +7,7 @@ client/node_modules
 /coverage
 
 # production
+dist/client/build
 
 # misc
 .env
