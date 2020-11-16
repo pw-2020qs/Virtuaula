@@ -4,13 +4,12 @@
   "description": "server side of virtuaula app",
   "main": "server.ts",
   "scripts": {
-    "install": "cd client && npm install",
     "client": "cd client && npm run start",
     "build": "cd client && npm run build",
     "server": "tsc-watch --onSuccess \"npm run start\" ",
     "dev": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\"",
-    "start": "nodemon dist/server.js",
-    "heroku-postbuild": "cd client && npm install && npm install --only=dev --no-shrinkwrap && npm run build",
+    "start": "node dist/server.js",
+    "heroku-postbuild": "cd client && npm ci && npm install --only=dev --no-shrinkwrap && npm run build && mv build ../dist/client",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
@@ -27,5 +26,9 @@
     "concurrently": "^5.3.0",
     "nodemon": "^2.0.6",
     "tsc-watch": "^4.2.9"
+  },
+  "engines": {
+    "node": "14.15.0",
+    "npm": "6.14.8"
   }
 }
