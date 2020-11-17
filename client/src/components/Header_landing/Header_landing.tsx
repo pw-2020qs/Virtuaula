@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './Header_landing.css';
 import logo from './logo_small.png';
 
@@ -13,13 +14,17 @@ export  function Header_landing() {
             </button>
             <div className="collapse navbar-collapse d-flex justify-content-between " id="navbarNavAltMarkup">
                 <div className="nav-item navbar-nav">
+
+                    
                     <a className="nav-item nav-link " href="#">Sobre</a>
                     <a className="nav-item nav-link" href="#">Universidade</a>
                 </div >
                 <div className="nav-item navbar-nav">
 
                     <a className="nav-item nav-link" href="#">Contato</a>
+                    <Link to={'../../pages/landing/landing'}>
                     <a className="nav-item nav-link " href="./logIn">Entrar</a>
+                    </Link>
                 </div>
             </div>
         </nav>

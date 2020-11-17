@@ -1,7 +1,7 @@
-import { relative } from 'path';
 import React from 'react';
 import { Header_landing as Header } from '../../components/Header_landing/Header_landing';
 import logo from './logo512.jpeg'
+
 
 class Landing extends React.Component {
 
