@@ -19,7 +19,7 @@ if (process.env.NODE_ENV === 'production') {
     app.use(express.static(path.join(__dirname, 'client')));
     // Handle React routing, return all requests to React app
     app.get('*', function (req, res) {
-        res.sendFile(path.join(__dirname, 'client', 'landing.html'));
+        res.sendFile(path.join(__dirname, 'client', 'index.html'));
     });
 }
 app.listen(port, function () { return console.log("Listening on port " + port); });
