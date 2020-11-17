@@ -1,5 +1,6 @@
 import React from 'react';
 import logo from './logo512.png';
+import {Link} from 'react-router-dom';
 
 export default class LogIn extends React.Component {
 
@@ -27,7 +28,8 @@ export default class LogIn extends React.Component {
                                             <input className="mt-2 btn btn-primary" type="submit" value="Acessar" />
                                         </div>
                                         <span className="col-8">Primeiro acesso? <br />
-                                            <a href="./logIn/Cadastro">Crie sua conta.</a>
+                                        
+                                            <Link to="./logIn/Cadastro">Crie sua conta.</Link>
                                         </span>
                                     </div>
                                 </form>

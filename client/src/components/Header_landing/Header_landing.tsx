@@ -22,9 +22,7 @@ export  function Header_landing() {
                 <div className="nav-item navbar-nav">
 
                     <a className="nav-item nav-link" href="#">Contato</a>
-                    <Link to={'./logIn'}>
-                    <a className="nav-item nav-link " href="./logIn">Entrar</a>
-                    </Link>
+                    <Link className="nav-item nav-link" to={'./logIn'}>Entrar</Link>
                 </div>
             </div>
         </nav>
