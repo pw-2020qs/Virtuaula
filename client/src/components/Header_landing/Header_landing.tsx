@@ -2,7 +2,7 @@ import React from 'react';
 import './Header_landing.css';
 import logo from './logo_small.png';
 
-export default function Header_landing() {
+export  function Header_landing() {
     return (
         <nav className="navbar navbar-expand-lg  bg-light navbar-light pb-0 pt-0 margin" style={{height:"2.8rem"}}>
             <div className="h-100 overflow-hidden navbar-brand h-100" >
@@ -19,7 +19,7 @@ export default function Header_landing() {
                 <div className="nav-item navbar-nav">
 
                     <a className="nav-item nav-link" href="#">Contato</a>
-                    <a className="nav-item nav-link " href="#">Entrar</a>
+                    <a className="nav-item nav-link " href="./logIn">Entrar</a>
                 </div>
             </div>
         </nav>

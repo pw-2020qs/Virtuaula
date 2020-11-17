@@ -16,10 +16,10 @@ app.post('/api/world', function (req, res) {
 });
 if (process.env.NODE_ENV === 'production') {
     // Serve all static files
-    app.use(express.static(path.join(__dirname, 'client/build')));
+    app.use(express.static(path.join(__dirname, 'client')));
     // Handle React routing, return all requests to React app
     app.get('*', function (req, res) {
-        res.sendFile(path.join(__dirname, 'client/build', 'landing.html'));
+        res.sendFile(path.join(__dirname, 'client', 'landing.html'));
     });
 }
 app.listen(port, function () { return console.log("Listening on port " + port); });
