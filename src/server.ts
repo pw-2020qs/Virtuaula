@@ -9,6 +9,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 
+//Implementação do servidor para front-end de produção
+
 app.get('/api/hello', (req, res) => {
   res.send({ express: 'Hello From Express' });
 });
@@ -19,6 +21,10 @@ app.post('/api/world', (req, res) => {
     `I received your POST request. This is what you sent me: ${req.body.post}`,
   );
 });
+
+
+
+//Implementação do servidor para front-end de produção
 
 if (process.env.NODE_ENV === 'production') {
   // Serve all static files

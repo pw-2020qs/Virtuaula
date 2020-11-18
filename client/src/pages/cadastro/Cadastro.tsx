@@ -9,7 +9,7 @@ export default class LogIn extends React.Component {
             <div className="row overflow-hidden" style={{ height: "100vh", width: "100vw" }}>
 
                 {/* Implementação do Sidebar com botões de login */}
-                <div className="w-100 h-100 d-flex justify-content-center col" style={{ backgroundColor: "#fceca3" }}>
+                <div className="w-100 h-100 d-flex justify-content-center col border-right shadow border-dark" style={{ backgroundColor: "#fceca3" }}>
                     <div className="d-flex justify-content-center w-100">
 
                         <form className="container" action="">
