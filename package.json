@@ -4,6 +4,7 @@
   "description": "server side of virtuaula app",
   "main": "server.ts",
   "scripts": {
+    "install": "cd client && npm install",
     "client": "cd client && npm run start",
     "build": "cd client && npm run build",
     "build-hero": "cd client && npm run build-hero",
