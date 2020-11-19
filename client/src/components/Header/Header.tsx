@@ -3,7 +3,7 @@ import logo from './logo_small.png'
 
 export default function Header() {
     return (
-        <nav className="navbar navbar-expand-lg  bg-light navbar-light pb-0 pt-0 margin" style={{height:"2.8rem"}}>
+        <nav className="navbar navbar-expand-lg  bg-light navbar-light pb-0 pt-0 margin shadow-sm" style={{height:"2.8rem"}}>
             <div className="h-100 overflow-hidden navbar-brand h-100" >
                 <img className="h-100"  src={logo} alt=""/>
             </div>

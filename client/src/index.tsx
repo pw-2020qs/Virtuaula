@@ -6,7 +6,7 @@ import {BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Landing from './pages/landing/landing';
 import Perfil from './pages/perfil/perfil';
 import logIn from './pages/logIn/logIn';
-import Cadastro from './pages/cadastro/Cadastro';
+import Cadastro from './pages/cadastro/cadastro';
 
 
 ReactDOM.render(
