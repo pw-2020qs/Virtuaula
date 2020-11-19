@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import LogIn from '../../pages/cadastro/cadastro';
 
 
-type LogInFormProps = {
+type CadastroFormState = {
     name: string,
     lastName: string,
     email: string,
@@ -14,22 +14,17 @@ type LogInFormProps = {
     loginError: string
 }
 
+type CadastroFormProps = {
+    handleSuccessfulRegister: (data: string) => void
+}
 
 
-class CadastroForm extends React.Component<{}, 
-{
-    name: string,
-    lastName: string,
-    email: string,
-    profile: string,
-    university: string,
-    password: string,
-    passwordConf: string,
-    loginError: string
-}>
-{
 
-    constructor(props: LogInFormProps) {
+
+
+class CadastroForm extends React.Component<CadastroFormProps,CadastroFormState>{
+
+    constructor(props: CadastroFormProps) {
         super(props);
         this.state = {
             name: "",
