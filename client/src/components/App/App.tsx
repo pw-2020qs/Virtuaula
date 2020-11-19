@@ -9,21 +9,21 @@ class App extends React.Component {
     post: '',
     responseToPost: '',
   };
-  
+
   componentDidMount() {
     this.callApi()
       .then(res => this.setState({ response: res.express }))
       .catch(err => console.log(err));
   }
-  
+
   callApi = async () => {
     const response = await fetch('/api/hello');
     const body = await response.json();
     if (response.status !== 200) throw Error(body.message);
-    
+
     return body;
   };
-  
+
   handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
@@ -32,17 +32,17 @@ class App extends React.Component {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({post: this.state.post}),
+      body: JSON.stringify({ post: this.state.post }),
     });
     const body = await response.text();
-    
+
     this.setState({ responseToPost: body });
   };
-  
-render() {
+
+  render() {
     return (
-      <div 
-      className="App">
+      <div
+        className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <p>
