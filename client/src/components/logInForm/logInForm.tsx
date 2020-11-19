@@ -2,15 +2,18 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 
-type LogInFormProps = {
+type LogInFormState = {
     email: string,
     password: string,
     loginError: string
 }
 
+type LogInFormProps = {
+    handleSuccessfulAuth: (data: string) => void
+}
 
 
-class LogInForm extends React.Component<{}, {email: string,password: string,loginError: string}> {
+class LogInForm extends React.Component<LogInFormProps, LogInFormState> {
 
     constructor(props: LogInFormProps) {
         super(props);

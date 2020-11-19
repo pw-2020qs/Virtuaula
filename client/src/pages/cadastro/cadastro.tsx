@@ -1,9 +1,15 @@
 import React from 'react';
 import logo from './logo512.png';
 import CadastroForm from '../../components/CadastroForm/CadastroForm'
+import { RouteComponentProps } from 'react-router-dom';
 
-export default class Cadastro extends React.Component {
-    constructor(props) {
+interface CadastroProps extends RouteComponentProps<any> {
+} 
+
+
+
+export default class Cadastro extends React.Component<CadastroProps, {}>  {
+    constructor(props: CadastroProps) {
         super(props);
 
         this.handleSuccessfulRegister = this.handleSuccessfulRegister.bind(this);

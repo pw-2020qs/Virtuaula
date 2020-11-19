@@ -1,12 +1,14 @@
 import React from 'react';
 import logo from './logo512.png';
 import LogInForm from '../../components/logInForm/logInForm';
+import { RouteComponentProps } from 'react-router-dom';
+
+interface LogInProps extends RouteComponentProps<any> {
+} 
 
 
-
-
-export default class LogIn extends React.Component {
-    constructor(props) {
+export default class LogIn extends React.Component<LogInProps,{}> {
+    constructor(props: LogInProps) {
         super(props);
 
         this.handleSuccessfulAuth = this.handleSuccessfulAuth.bind(this);
