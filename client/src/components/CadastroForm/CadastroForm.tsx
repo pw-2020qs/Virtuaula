@@ -16,7 +16,18 @@ type LogInFormProps = {
 
 
 
-class CadastroForm extends React.Component {
+class CadastroForm extends React.Component<{}, 
+{
+    name: string,
+    lastName: string,
+    email: string,
+    profile: string,
+    university: string,
+    password: string,
+    passwordConf: string,
+    loginError: string
+}>
+{
 
     constructor(props: LogInFormProps) {
         super(props);
@@ -24,7 +35,7 @@ class CadastroForm extends React.Component {
             name: "",
             lastName: "",
             email: "",
-            profile: "",
+            profile: "Aluno",
             university: "",
             password: "",
             passwordConf: "",

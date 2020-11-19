@@ -10,7 +10,7 @@ type LogInFormProps = {
 
 
 
-class LogInForm extends React.Component {
+class LogInForm extends React.Component<{}, {email: string,password: string,loginError: string}> {
 
     constructor(props: LogInFormProps) {
         super(props);
