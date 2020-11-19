@@ -22,7 +22,14 @@ app.post('/api/world', (req, res) => {
   );
 });
 
+app.post('/api/login', function(req,res){
 
+  //Comparar informações com o Banco de Dados
+  console.log(req.body);
+
+  res.send(`Nome: ${req.body.email}, Senha: ${req.body.password}`);
+
+})
 
 //Implementação do servidor para front-end de produção
 

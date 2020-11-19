@@ -1,8 +1,23 @@
 import React from 'react';
 import logo from './logo512.png';
-import { Link } from 'react-router-dom';
+import LogInForm from '../../components/logInForm/logInForm';
+
+
+
 
 export default class LogIn extends React.Component {
+    constructor(props) {
+        super(props);
+
+        this.handleSuccessfulAuth = this.handleSuccessfulAuth.bind(this);
+    }
+
+    handleSuccessfulAuth(data: string) {
+        console.log(`Login enviado, da página LogIn`, data)
+        // this.props.handleLogin(data);
+        // this.props.history.push("/dashboard");
+    }
+
 
     render() {
         return (
@@ -19,20 +34,7 @@ export default class LogIn extends React.Component {
                             </a>
                             </div>
                             <div className="row w-75 mr-auto ml-auto mt-5">
-                                <form action="">
-                                    <label htmlFor="access-email">Email</label><br />
-                                    <input type="email" name="access-email" id="acess-email" /> <br />
-                                    <label className="mt-2" htmlFor="pass">Senha:</label> <br />
-                                    <input type="password" id="pass" name="password" required />
-                                    <div className="row">
-                                        <div className="col-4">
-                                            <input className="mt-2 btn btn-primary" type="submit" value="Acessar" />
-                                        </div>
-                                        <span className="pl-4 col-8">Primeiro acesso? <br />
-                                            <Link to="./logIn/Cadastro">Crie sua conta.</Link>
-                                        </span>
-                                    </div>
-                                </form>
+                                <LogInForm handleSuccessfulAuth={this.handleSuccessfulAuth} />
                             </div>
                         </div>
                     </div> <br />

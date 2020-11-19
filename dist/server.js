@@ -15,6 +15,11 @@ app.post('/api/world', function (req, res) {
     console.log(req.body);
     res.send("I received your POST request. This is what you sent me: " + req.body.post);
 });
+app.post('/api/login', function (req, res) {
+    //Comparar informações com o Banco de Dados
+    console.log(req.body);
+    res.send("Nome: " + req.body.email + ", Senha: " + req.body.password);
+});
 //Implementação do servidor para front-end de produção
 if (process.env.NODE_ENV === 'production') {
     // Serve all static files
