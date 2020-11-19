@@ -13,7 +13,6 @@ export default class LogIn extends React.Component {
     }
 
     handleSuccessfulAuth(data: string) {
-        console.log(`Login enviado, da página LogIn`, data)
         // this.props.handleLogin(data);
         // this.props.history.push("/dashboard");
     }

@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import LogIn from '../../pages/cadastro/Cadastro';
 
 
 type LogInFormProps = {
@@ -30,7 +29,7 @@ class LogInForm extends React.Component {
 
         const { email, password } = this.state;
 
-        const response = await fetch('/api/logIn', {
+        await fetch('/api/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -40,15 +39,11 @@ class LogInForm extends React.Component {
                 password: password,
             }),
         }).then(async response => {
-            console.log("resposta do LogIn:", response)
             this.props.handleSuccessfulAuth(await response.text())
         })
             .catch(err => {
                 console.log("Erro de Login", err);
             })
-
-
-
     };
 
 

@@ -24,12 +24,24 @@ app.post('/api/world', (req, res) => {
 
 app.post('/api/login', function(req,res){
 
-  //Comparar informações com o Banco de Dados
+  //Fazer Authorização utilizando o  banco de dados 
   console.log(req.body);
-
   res.send(`Nome: ${req.body.email}, Senha: ${req.body.password}`);
 
 })
+
+app.post('/api/cadastro', function(req,res) {
+
+  //Fazer Novo registro no  banco de dados 
+  console.log("do Servidor", req.body);
+
+  if(req.body.password == req.body.passwordConf){
+    res.status(201).send(req.body); // Confirmação novo cadastro
+  } else{
+    res.status(400).send(req.body); // Erro no Cadastro
+  }
+})
+
 
 //Implementação do servidor para front-end de produção
 
