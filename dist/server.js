@@ -23,7 +23,7 @@ app.get('/api/infocurso', function (req, res) {
                 res.status(200).send({ listaAtividade: data });
             }
             else {
-                res.status(404).send(); //Informação do curso não encontrada
+                res.status(404).send(); //Informação git do curso não encontrada
             }
         }
     }

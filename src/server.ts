@@ -15,7 +15,13 @@ app.post('/api/login', function(req,res){
 
   //Fazer Authorização utilizando o  banco de dados 
   console.log(req.body);
-  res.send(`Nome: ${req.body.email}, Senha: ${req.body.password}`);
+  if(1){
+    // Login autorizado.
+    res.status(200).send(`Nome: ${req.body.email}, Senha: ${req.body.password}`);
+  } else {
+    // Login não autorizado.
+    res.status(401).send();
+  }
 
 })
 
@@ -31,7 +37,7 @@ app.get('/api/infocurso', function(req,res) {
       if(data) {
         res.status(200).send({listaAtividade: data});
       }else {
-        res.status(404).send(); //Informação do curso não encontrada
+        res.status(404).send(); //Informação git do curso não encontrada
       }
     }
     }catch (err) {
