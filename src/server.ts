@@ -19,6 +19,26 @@ app.post('/api/login', function(req,res){
 
 })
 
+
+app.get('/api/infocurso', function(req,res) {
+
+  try {
+    if(req.query.numero) {
+      const cursoId = req.query.numero; 
+      //Procurar Informações do Curso no Banco de dados
+      let data = ['Atividade 1', 'Atividade 2', 'Atividade 3'];
+
+      if(data) {
+        res.status(200).send({listaAtividade: data});
+      }else {
+        res.status(404).send(); //Informação do curso não encontrada
+      }
+    }
+    }catch (err) {
+      res.status(500).json({err: err});
+    }
+})
+
 app.post('/api/cadastro', function(req,res) {
 
   //Fazer Novo registro no  banco de dados 

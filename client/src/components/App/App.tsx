@@ -6,17 +6,12 @@ import Perfil from '../../pages/perfil/perfil';
 import logIn from '../../pages/logIn/logIn';
 import Cadastro from '../../pages/cadastro/cadastro';
 import Dashboard from '../../pages/dashboard/Dashboard';
+import Curso from '../../pages/curso/curso';
 
-
-const logo = require("./logo.svg") as string;
 
 
 class App extends React.Component {
-  state = {
-    response: '',
-    post: '',
-    responseToPost: '',
-  };
+  state = {};
 
   render() {
     return (
@@ -28,6 +23,7 @@ class App extends React.Component {
           <Route path="/perfil" exact component={Perfil} />
           <Route path="/logIn/Cadastro" exact component={Cadastro} />
           <Route path="/dashboard" exact component={Dashboard}/>
+          <Route path="/curso/:cursoId"  component={Curso} />
         </Switch>
 
       </Router>

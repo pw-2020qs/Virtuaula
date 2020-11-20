@@ -17,6 +17,7 @@ export default class LogIn extends React.Component<LogInProps,{}> {
     handleSuccessfulAuth(data: string) {
         // this.props.handleLogin(data);
         // this.props.history.push("/dashboard");
+        this.props.history.push("/perfil");
     }
 
 
