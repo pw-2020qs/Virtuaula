@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { RouteComponentProps } from 'react-router-dom';
 import ListaAtividades from '../../components/ListaAtividade/listaAtividade'
+import Header from '../../components/Header/Header';
+
 
 type CursoState = {
     cursoId: string;
@@ -22,11 +24,12 @@ export default class Curso extends Component<CursoProps & RouteComponentProps<{ 
     }
 
 
+    // Espera a página carregar para carregar informações
     async componentDidMount() {
         await window.addEventListener('load', () => { this.loadCursoInfo() })
     }
 
-
+    //Busca informações do curso no banco de dados
     loadCursoInfo = async () => {
         let cursoId = this.state.cursoId;
         await fetch(`/api/infocurso?numero=${cursoId}`).then(async response => {
@@ -43,6 +46,8 @@ export default class Curso extends Component<CursoProps & RouteComponentProps<{ 
             })
     }
 
+
+    //Processa informações do curso
     handleCursoInfo(data: string[]) {
 
         this.setState({
@@ -55,6 +60,7 @@ export default class Curso extends Component<CursoProps & RouteComponentProps<{ 
 
         return (
             <div>
+                {/*Header e listaCurso deverá aparecer somente na página de Dashboard  */}
                 <h1>Curso</h1>
                 <ListaAtividades listaAtividade={this.state.listaAtividade} />
             </div>

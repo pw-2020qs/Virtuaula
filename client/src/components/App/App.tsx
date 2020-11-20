@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './App.css';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Landing from '../../pages/landing/landing';
@@ -9,8 +9,11 @@ import Curso from '../../pages/curso/curso';
 
 
 
-class App extends React.Component {
+const App = () => {
   state = {};
+  
+
+
 
   render() {
     return (
