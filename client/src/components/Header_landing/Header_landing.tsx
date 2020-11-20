@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './Header_landing.css';
-import logo from './logo_small.png';
+import logo from '../../assets/img/logo_small.png'
 
 export function Header_landing() {
     return (

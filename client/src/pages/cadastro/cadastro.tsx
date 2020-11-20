@@ -1,5 +1,5 @@
 import React from 'react';
-import logo from './logo512.png';
+import logo from '../../assets/img/logo512.png';
 import CadastroForm from '../../components/CadastroForm/CadastroForm'
 import { RouteComponentProps } from 'react-router-dom';
 
