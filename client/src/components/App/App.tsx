@@ -8,6 +8,7 @@ import Cadastro from '../../pages/cadastro/cadastro';
 import Curso from '../../pages/curso/curso';
 import PrivateRoute from '../PrivateRoute/PrivateRoute';
 import PublicRoute from '../PublicRoute/PublicRoute';
+import { AuthProvider } from '../AuthContext/AuthContext';
 
 
 
@@ -46,17 +47,17 @@ class App extends React.Component<AppProps, AppState> {
       password: sessionStorage.getItem('@vitruaula/password'),
       name: sessionStorage.getItem('@virtuaula/name')
     }
-    this.setState(user, ()=> {console.log('on callback',this.state)})
-    console.log('user',user)
-    console.log('this.state',this.state)
+    this.setState(user, () => { console.log('on callback', this.state) })
+    console.log('user', user)
+    console.log('this.state', this.state)
 
   }
 
   LoggedIn(): boolean {
 
     const email = this.state.email;
-    console.log('on loggedin',email )
-    if (email)  {
+    console.log('on loggedin', email)
+    if (email) {
       return true;
     } else {
       return false;
@@ -67,15 +68,17 @@ class App extends React.Component<AppProps, AppState> {
 
     return (
       <Router>
-        <Switch>
-          <Route path="/" exact >
-            {this.LoggedIn() ? <Redirect to="/dashboard" /> : <Landing />}
-          </Route>
-          <PublicRoute path="/logIn" exact component={logIn} />
-          <PublicRoute path="/logIn/Cadastro" exact component={Cadastro} />
-          <PrivateRoute path="/perfil" exact component={Perfil} />
-          <PrivateRoute path="/curso/:cursoId" component={Curso} />
-        </Switch>
+        <AuthProvider>
+          <Switch>
+            <Route path="/" exact >
+              {this.LoggedIn() ? <Redirect to="/dashboard" /> : <Landing />}
+            </Route>
+            <PublicRoute path="/logIn" exact component={logIn} />
+            <PublicRoute path="/logIn/Cadastro" exact component={Cadastro} />
+            <PrivateRoute path="/perfil" exact component={Perfil} />
+            <PrivateRoute path="/curso/:cursoId" component={Curso} />
+          </Switch>
+        </AuthProvider>
       </Router>
 
     );
