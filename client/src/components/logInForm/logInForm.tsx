@@ -8,8 +8,14 @@ type LogInFormState = {
     loginError: string
 }
 
+type user = {
+    email: string,
+    password: string
+    name: string,
+}
+
 type LogInFormProps = {
-    handleSuccessfulAuth: (data: string) => void
+    handleSuccessfulAuth: (data: user) => void
 }
 
 
@@ -41,9 +47,11 @@ class LogInForm extends React.Component<LogInFormProps, LogInFormState> {
                 email: email,
                 password: password,
             }),
-        }).then(async response => {
-            this.props.handleSuccessfulAuth(await response.text())
-        })
+        }).then(async response => response.json()
+        )
+            .then(async response =>
+                this.props.handleSuccessfulAuth(await response)
+            )
             .catch(err => {
                 console.log("Erro de Login", err);
             })

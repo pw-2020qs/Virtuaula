@@ -9,9 +9,21 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 //Implementação do servidor para front-end de produção
 app.post('/api/login', function (req, res) {
-    //Fazer Authorização utilizando o  banco de dados 
+    //Fazer Autorização utilizando o  banco de dados 
     console.log(req.body);
-    res.send("Nome: " + req.body.email + ", Senha: " + req.body.password);
+    if (1) {
+        // Login autorizado.
+        var user = {
+            email: 'usuario@teste.com',
+            password: 'senha_teste',
+            name: 'Usuário'
+        };
+        res.status(200).send(user);
+    }
+    else {
+        // Login não autorizado.
+        res.status(401).send();
+    }
 });
 app.get('/api/infocurso', function (req, res) {
     try {

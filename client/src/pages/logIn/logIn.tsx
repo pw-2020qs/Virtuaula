@@ -3,23 +3,37 @@ import logo from '../../assets/img/logo512.png';
 import LogInForm from '../../components/logInForm/logInForm';
 import { RouteComponentProps } from 'react-router-dom';
 
-interface LogInProps extends RouteComponentProps<any> {
+
+interface LogInProps extends RouteComponentProps {
 } 
 
+type user = {
+    email: string,
+    password: string
+    name: string,
+  }
 
 export default class LogIn extends React.Component<LogInProps,{}> {
     constructor(props: LogInProps) {
         super(props);
 
         this.handleSuccessfulAuth = this.handleSuccessfulAuth.bind(this);
+        this.setUser = this.setUser.bind(this);
     }
 
-    handleSuccessfulAuth(data: string) {
-        // this.props.handleLogin(data);
-        // this.props.history.push("/dashboard");
-        this.props.history.push("/perfil");
-    }
 
+    setUser = (user: user) => {
+        console.log('estou em setUser', user);
+        sessionStorage .setItem('@virtuaula/email', user.email);
+        sessionStorage.setItem('@virtuaula/password', user.password);
+        sessionStorage.setItem('@virtuaula/name', user.name);
+      }
+
+    handleSuccessfulAuth(data: user) {
+      
+        this.setUser(data);
+        this.props.history.push("/dashboard");
+    }
 
     render() {
         return (

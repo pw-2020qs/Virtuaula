@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
 import { RouteComponentProps } from 'react-router-dom';
 import ListaAtividades from '../../components/ListaAtividade/listaAtividade'
-import Header from '../../components/Header/Header';
 
 
 type CursoState = {
     cursoId: string;
     listaAtividade: string[],
-
 };
 type CursoProps = {};
 
@@ -19,14 +17,12 @@ export default class Curso extends Component<CursoProps & RouteComponentProps<{ 
             cursoId: cursoId,
             listaAtividade: []
         }
-
         this.loadCursoInfo = this.loadCursoInfo.bind(this);
     }
 
-
     // Espera a página carregar para carregar informações
-    async componentDidMount() {
-        await window.addEventListener('load', () => { this.loadCursoInfo() })
+     componentDidMount() {
+         window.addEventListener('load', () => { this.loadCursoInfo() })
     }
 
     //Busca informações do curso no banco de dados
@@ -49,7 +45,6 @@ export default class Curso extends Component<CursoProps & RouteComponentProps<{ 
 
     //Processa informações do curso
     handleCursoInfo(data: string[]) {
-
         this.setState({
             listaAtividade: data
         })
@@ -57,10 +52,9 @@ export default class Curso extends Component<CursoProps & RouteComponentProps<{ 
 
 
     render() {
-
         return (
             <div>
-                {/*Header e listaCurso deverá aparecer somente na página de Dashboard  */}
+                {/*Header e listaCurso deverá aparecer somente na página de Home  */}
                 <h1>Curso</h1>
                 <ListaAtividades listaAtividade={this.state.listaAtividade} />
             </div>
