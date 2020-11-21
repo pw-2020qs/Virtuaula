@@ -6,6 +6,7 @@ import Perfil from '../../pages/perfil/perfil';
 import logIn from '../../pages/logIn/logIn';
 import Cadastro from '../../pages/cadastro/cadastro';
 import Curso from '../../pages/curso/curso';
+import PrivateRoute from '../PrivateRoute/PrivateRoute';
 
 
 
@@ -64,17 +65,15 @@ class App extends React.Component<AppProps, AppState> {
   render() {
 
     return (
-
-
       <Router>
         <Switch>
           <Route path="/" exact >
             {this.LoggedIn() ? <Redirect to="/dashboard" /> : <Landing />}
           </Route>
           <Route path="/logIn" exact component={logIn} />
-          <Route path="/perfil" exact component={Perfil} />
-          <Route path="/logIn/Cadastro" exact component={Cadastro} />
-          <Route path="/curso/:cursoId" component={Curso} />
+          <PrivateRoute path="/perfil" exact component={Perfil} />
+          <PrivateRoute path="/logIn/Cadastro" exact component={Cadastro} />
+          <PrivateRoute path="/curso/:cursoId" component={Curso} />
         </Switch>
       </Router>
 
