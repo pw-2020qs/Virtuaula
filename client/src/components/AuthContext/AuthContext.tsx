@@ -10,16 +10,16 @@ export const AuthContext =
 
 function AuthProvider() {
     let state: AuthProps = {
-        isAuth: false,
+        isAuth: true,
         email: ""
     };
-    return <AuthContext.Provider value={{
-        isAuth: state.isAuth,
-        email: state.email
-    }}>
+    return <AuthContext.Provider
+        value={{
+            isAuth: true,
+            email: ""
+        }}>
     </AuthContext.Provider>;
 }
 
 const AuthConsumer = AuthContext.Consumer;
-
 export { AuthProvider, AuthConsumer }
