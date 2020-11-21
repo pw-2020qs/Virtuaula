@@ -6,7 +6,7 @@ import {AuthConsumer} from '../AuthContext/AuthContext';
 const PrivateRoute = ({component: Component, ...rest}: any) => (
 
     <AuthConsumer>
-        {({isAuth}) => (
+        {({isAuth}) => ( //Usar valor isAuth do Context
             <Route  render={(props) =>  ( true? <Component {...props} /> : <Redirect to="/login"/>)} />
         )}
     </AuthConsumer>

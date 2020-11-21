@@ -8,6 +8,7 @@ import Cadastro from '../../pages/cadastro/cadastro';
 import Dashboard from '../../pages/dashboard/Dashboard';
 import Curso from '../../pages/curso/curso';
 import PrivateRoute from '../PrivateRoute/PrivateRoute';
+import PublicRoute from '../PublicRoute/PublicRoute';
 
 
 
@@ -71,9 +72,9 @@ class App extends React.Component<AppProps, AppState> {
           <Route path="/" exact >
             {this.LoggedIn() ? <Redirect to="/dashboard" /> : <Landing />}
           </Route>
-          <Route path="/logIn" exact component={logIn} />
+          <PublicRoute path="/logIn" exact component={logIn} />
+          <PublicRoute path="/logIn/Cadastro" exact component={Cadastro} />
           <PrivateRoute path="/perfil" exact component={Perfil} />
-          <PrivateRoute path="/logIn/Cadastro" exact component={Cadastro} />
           <PrivateRoute path="/curso/:cursoId" component={Curso} />
         </Switch>
       </Router>
