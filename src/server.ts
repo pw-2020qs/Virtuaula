@@ -8,16 +8,29 @@ const port = process.env.PORT || 5000;
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+type user = {
+  email: string,
+  password: string
+  name: string,
+}
+
 
 //Implementação do servidor para front-end de produção
 
 app.post('/api/login', function(req,res){
 
-  //Fazer Authorização utilizando o  banco de dados 
+  //Fazer Autorização utilizando o  banco de dados 
   console.log(req.body);
   if(1){
     // Login autorizado.
-    res.status(200).send(`Nome: ${req.body.email}, Senha: ${req.body.password}`);
+    let user: user = {
+      email: 'usuario@teste.com',
+      password: 'senha_teste',
+      name: 'Usuário'
+    } 
+    res.status(200).send(user);
+
+    
   } else {
     // Login não autorizado.
     res.status(401).send();
