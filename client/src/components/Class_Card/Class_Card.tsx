@@ -1,16 +1,15 @@
 import React from 'react';
 
-class Card extends React.Component{
-    render(){
-        return (
-            <div>
-                <img src="" alt=""/>
-                <h3>Programação Web</h3>
-                
+
+function Card(props: any) {
+    return (
+        <div className='card col-md-6' >
+            <img className='card-img-top' src={props.imgsrc} alt=""/>
+            <div className='card-body'>
+                <h3 className='card-title'>{props.title}</h3>
             </div>
-            
-            )
-    }
+        </div>
+    )
 }
 
 export {Card}
