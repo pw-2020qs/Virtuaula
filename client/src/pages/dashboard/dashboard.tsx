@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-export default class Perfil extends React.Component {
+export default class Dashboard extends React.Component {
 
     render() {
 
