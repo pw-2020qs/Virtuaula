@@ -1,32 +1,68 @@
 import React from 'react';
 import {Card} from '../../components/Class_Card/Class_Card'
 import pw from './programacao-web-icon.png'
+import tg from './teoria-dos-grafos.png'
 import { Header_landing as Header } from '../../components/Header_landing/Header_landing'
+import InfiniteCalendar from 'react-infinite-calendar'
+import 'react-infinite-calendar/styles.css'
+
+function Event(props: any) {
+    return (
+        <li className='col-md-12 list-group-item'>
+            <p>{props.date}: {props.eventType} - {props.course} - {props.time}</p>
+            
+        </li>
+    )
+}
+
 export default class Dashboard extends React.Component{
     render(){
         return (
             <div>
                 <Header/>
-            <div className='container p-5'>
+            <div className='container p-4'>
+            <div className='card'>
+                <div className='card-header'>Dashboard</div>
                 <div id="dashboard" className='row'>
-                    <div id='cards' className='col-md-6 row'>
+                    <div id='cards' className='col-md-7 row'>
                     <Card title='Programação Web' imgsrc={pw}/>
-                    <Card title='Programação Web' imgsrc={pw}/>
-                    <Card title='Programação Web' imgsrc={pw}/>
-                    <Card title='Programação Web' imgsrc={pw}/>
+                    <Card title='Teoria dos grafos' imgsrc={tg}/>
+                    <Card title='Compiladores' imgsrc={pw}/>
                     </div>
-                    <div id='novos-cursos card' className='col-md-3'>
+                    <div id='novos-cursos' className='col-md-2 card' style={{backgroundColor: "#fceca3"}}>
                         <div className='card-body'>
-                            <button type="button" className='btn btn-primary'>+ Novos cursos</button>
+                            <button type="button" className='btn btn-primary' style={{backgroundColor: "transparent", border:'none', color:'black'}}>Novo curso</button>
                         </div>
                     </div>
                     <div id='datas'  className='col-md-3'>
-                        <div className='row'>
-                            <div id='calendario'></div>
-                            <div id='proximos-eventos'></div>
+                        <div className='container'>
+                            <div id='calendario' className='card'>
+                                <InfiniteCalendar
+                                    width={250}
+                                    height={300}
+                                    theme=
+                                        {{
+                                            headerColor: '#f7914D',
+                                            selectionColor: '#f7914D',
+                                            weekdayColor: '#f7914D',
+                                            floatingNav: {
+                                                background: '#fceca3',
+                                            }
+                                        }}
+                                />
+                            </div>
+                            <div id='proximos-eventos' className='card'>
+                                <div className='card-header'>Próximos eventos</div>
+                                <div className='list-group list-group-flush card-body'>
+                                <Event date='27/11' eventType='Aula' course='PW' time='19h'/>
+                                <Event date='30/11' eventType='Prova' course='PW' time='21h'/>
+                                <Event date='01/12' eventType='Aula' course='Compiladores' time='19h'/>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
+            </div>
             </div>
             </div>
         )
