@@ -1,61 +1,83 @@
-import React, {
-    Context,
-    ReactNode,
-    useState,
-    useEffect,
-    useCallback,
-    useMemo
-} from 'react';
+import React, { createContext, ReactNode, useCallback, useEffect, useState } from 'react';
+// import useSessionStorage from '../../hooks/useSessionStorage';
+
 
 type ContextValue = {
     isAuth: boolean,
-    email: string,
-    username: string
+    setIsAuth: any,
+    user: {},
+    signIn: any,
+    signOut: any,
 };
-
-export const AuthContext =
-
-    React.createContext<ContextValue | any>(void 0);
-
 type Props = {
     children: ReactNode
 }
 
-class AuthProvider extends React.Component {
-    state = {
-        isAuth: false,
-        email: "",
-        username: "",
-    }
-    constructor(props: Props) {
-        super(props);
+
+//Inicialização do Contexto de Autenticação
+export const AuthContext =
+
+    createContext<ContextValue | any>(void 0);
 
 
-        this.login = this.login.bind(this)
-        this.logout = this.logout.bind(this)
-    }
 
-    login(data: boolean) {
-        this.setState({ isAuth: true })
-    }
+export const AuthProvider = ({ children }: Props) => {
 
-    logout() {
-        this.setState({ isAuth: false })
-    }
-    render() {
-        const { children } = this.props;
-        let values = {
-            isAuth: this.state.isAuth,
-            email: this.state.email,
-            username: this.state.username,
-            login: this.login,
-            logout: this.logout
+
+    // const [isAuth, setIsAuth] = useState(false);
+    const [user, setUser] = useState(""); 
+    const [email, setEmail] = useState("");
+    const storageEmail = sessionStorage.getItem('@virtuaula/email');
+    const storageUser = sessionStorage.getItem('@virtuaula/user');
+
+
+    // Checagem após o page refresh se ha um usuário logado
+    useEffect(() => {
+        console.log('useEffect', storageUser, storageEmail)
+        if (storageUser && storageEmail) {
+            setEmail(storageEmail);
+            setUser(storageUser);
+            // setIsAuth(true);
         }
-        return <AuthContext.Provider
-            value={values}>{children}
-        </AuthContext.Provider>;
-    }
+    },[storageUser, storageEmail]);
+
+
+    const signIn = useCallback( async () => {
+
+        console.log('SignIn', storageUser, storageEmail)
+        // setIsAuth(true);
+        if (storageUser && storageEmail) {
+            setEmail(storageEmail);
+            setUser(storageUser);
+        }
+    }, [storageUser, storageEmail]);
+
+
+    const signOut = useCallback(() => {
+
+        console.log('SignOut')
+
+        sessionStorage.removeItem('@virtuaula/user')
+        sessionStorage.removeItem('@virtuaula/email') 
+        setUser("");
+        setUser("");
+    },[]);
+
+
+    return (
+
+        <AuthContext.Provider value={{
+            isAuth: (storageUser && storageEmail )? true: false,
+            // setIsAuth,
+            user,
+            email,
+            signIn,
+            signOut
+        }}>
+            { children}
+        </AuthContext.Provider>
+    )
 }
 
-const AuthConsumer = AuthContext.Consumer;
-export { AuthProvider, AuthConsumer }
+
+export default AuthContext;

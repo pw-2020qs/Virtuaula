@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { RouteComponentProps } from 'react-router-dom';
+import Header from '../../components/Header/Header';
 import ListaAtividades from '../../components/ListaAtividade/listaAtividade'
 
 
@@ -54,7 +55,7 @@ export default class Curso extends Component<CursoProps & RouteComponentProps<{ 
     render() {
         return (
             <div>
-                {/*Header e listaCurso deverá aparecer somente na página de Home  */}
+                <Header/>
                 <h1>Curso</h1>
                 <ListaAtividades listaAtividade={this.state.listaAtividade} />
             </div>

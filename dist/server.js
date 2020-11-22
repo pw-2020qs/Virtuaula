@@ -16,7 +16,7 @@ app.post('/api/login', function (req, res) {
         var user = {
             email: 'usuario@teste.com',
             password: 'senha_teste',
-            name: 'Usuário'
+            user: 'Usuário2'
         };
         res.status(200).send(user);
     }
