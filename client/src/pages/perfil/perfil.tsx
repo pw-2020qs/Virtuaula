@@ -1,20 +1,15 @@
 import React from 'react';
+import Header from '../../components/Header/Header';
 
 
 export default class Perfil extends React.Component {
 
     render() {
 
-        const email = sessionStorage.getItem('@virtuaula/email')
-        const password = sessionStorage.getItem('@virtuaula/password')
-        const name = sessionStorage.getItem('@virtuaula/name')
-
+        
         return (
             <div className="min-h-100">
-
-                <div>email: {email}</div>
-                <div>Password: {password}</div>
-                <div>Nome: {name}</div>
+                <Header/>
             </div>
         )
     }

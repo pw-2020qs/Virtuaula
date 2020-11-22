@@ -1,6 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import LogIn from '../../pages/cadastro/cadastro';
 
 
 type CadastroFormState = {
@@ -22,7 +20,7 @@ type CadastroFormProps = {
 
 
 
-class CadastroForm extends React.Component<CadastroFormProps,CadastroFormState>{
+class CadastroForm extends React.Component<CadastroFormProps, CadastroFormState>{
 
     constructor(props: CadastroFormProps) {
         super(props);
@@ -62,11 +60,11 @@ class CadastroForm extends React.Component<CadastroFormProps,CadastroFormState>{
                 passwordConf: passwordConf
             }),
         }).then(async response => {
-            if(response.status==201){
+            if (response.status === 201) {
                 this.props.handleSuccessfulRegister(await response.text())
             }
             else {
-                throw `${response.status}`;
+                throw Error(`${response.status}`);
 
             }
         })
@@ -232,7 +230,7 @@ class CadastroForm extends React.Component<CadastroFormProps,CadastroFormState>{
                         <label
                             className="form-check-label"
                             htmlFor="inlineFormCheck" >
-                            Lí e concordo com os <a href="">termos de compromisso.</a>
+                            Lí e concordo com os <a href="https://www.google.com">termos de compromisso.</a>
                         </label>
 
                     </div>

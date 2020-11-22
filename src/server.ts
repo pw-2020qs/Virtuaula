@@ -11,7 +11,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 type user = {
   email: string,
   password: string
-  name: string,
+  user: string,
 }
 
 
@@ -26,7 +26,7 @@ app.post('/api/login', function(req,res){
     let user: user = {
       email: 'usuario@teste.com',
       password: 'senha_teste',
-      name: 'Usuário'
+      user: 'Usuário2'
     } 
     res.status(200).send(user);
 

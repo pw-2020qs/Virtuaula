@@ -1,41 +1,41 @@
-import React, { useContext, useState, useEffect, useCallback } from 'react';
+import React, { useState, useCallback, } from 'react';
 import { Link } from 'react-router-dom';
-import { AuthContext } from '../../context/AuthContext/AuthContext';
+import useAuth from '../../hooks/useAuth'
+import { RouteComponentProps } from 'react-router-dom';
+
 
 type user = {
     email: string,
     password: string
-    name: string,
+    user: string,
 }
 
-type LogInFormProps = {
+
+interface LogInFormProps {
     handleSuccessfulAuth: (data: user) => void
 }
 
-type LogInFormState = {
-    email: string,
-    password: string,
-    loginError: string
+interface LogInFormProps extends RouteComponentProps {
 }
 
 
+const LogInForm = (props: LogInFormProps) => {
 
-
-function LogInForm(props: LogInFormProps) {
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [LogInError, setLigInError] = useState('');
-    let { login, isAuth, logout } = useContext(AuthContext);
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    // const [logInError, setLoginError] = useState("");
+    const { signIn } = useAuth();
 
     const handleSignIn = useCallback(() => {
-        login(true);
-    }, [login]);
+        signIn();
+    }, [signIn]);
 
-    const HandleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-        console.log('Estou no LoginForm')
+
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+
         e.preventDefault();
 
-        await fetch('/api/login', {
+        fetch('/api/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -47,25 +47,19 @@ function LogInForm(props: LogInFormProps) {
         }).then(async response => response.json()
         )
             .then(async response => {
-                await login(true);
-                handleSignIn();
-                props.handleSuccessfulAuth(await response)
-            }
-            )
+                props.handleSuccessfulAuth(await response);
+                await handleSignIn();
+            })
+            .then(() => {
+                props.history.push("/dashboard")
+            })
             .catch(err => {
                 console.log("Erro de Login", err);
             })
-
-        console.log('Autenticação é ', isAuth)
-
-
-
     };
 
-
-
     return (
-        <form onSubmit={HandleSubmit}>
+        <form onSubmit={handleSubmit}>
             <label
                 htmlFor="access-email">
                 Email
@@ -105,8 +99,8 @@ function LogInForm(props: LogInFormProps) {
                 </span>
             </div>
         </form>
-    )
+    );
+}
 
-};
 
 export default LogInForm;

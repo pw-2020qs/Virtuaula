@@ -1,16 +1,19 @@
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
-import { AuthConsumer } from '../../context/AuthContext/AuthContext';
+import useAuth from '../../hooks/useAuth';
 
 
-const PrivateRoute = ({ component: Component, ...rest }: any) => (
-        <AuthConsumer>
-            {({isAuth}) => ( 
-            <Route render={(props) => (isAuth ? <Component {...props} />
-                :
-                <Redirect to={{ pathname: "/login", state: { from: props.location } }} />)} />
-        )}
-        </AuthConsumer>
-)
+const PrivateRoute = ({ component: Component, ...rest }: any) => {
+
+        const { isAuth } = useAuth();
+        return (<Route
+                {...rest}
+                render={ (props) => isAuth
+                    ? <Component {...props} />
+                    : <Redirect to='/login' /> 
+                }
+            />)
+}
+
 
 export default PrivateRoute;

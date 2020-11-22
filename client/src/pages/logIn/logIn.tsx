@@ -1,19 +1,19 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import logo from '../../assets/img/logo512.png';
 import LogInForm from '../../components/logInForm/logInForm';
 import { RouteComponentProps } from 'react-router-dom';
 
 
 interface LogInProps extends RouteComponentProps {
-}
+} 
 
 type user = {
     email: string,
     password: string
-    name: string,
-}
+    user: string,
+  }
 
-export default class LogIn extends React.Component<LogInProps, {}> {
+export default class LogIn extends React.Component<LogInProps,{}> {
     constructor(props: LogInProps) {
         super(props);
 
@@ -23,16 +23,12 @@ export default class LogIn extends React.Component<LogInProps, {}> {
 
 
     setUser = (user: user) => {
-        console.log('estou em setUser', user);
         sessionStorage.setItem('@virtuaula/email', user.email);
-        sessionStorage.setItem('@virtuaula/password', user.password);
-        sessionStorage.setItem('@virtuaula/name', user.name);
-    }
+        sessionStorage.setItem('@virtuaula/user', user.user);
+      }
 
     handleSuccessfulAuth(data: user) {
-        
-        console.log('Estou no Login Page');
-        this.props.history.push("/dashboard");
+        this.setUser(data);
     }
 
 
@@ -46,12 +42,12 @@ export default class LogIn extends React.Component<LogInProps, {}> {
                     <div className="d-flex justify-content-center w-100">
                         <div className="container justify-content-center align-self-center">
                             <div className="row w-75 mr-auto ml-auto mt-5">
-                                <a className="ml-0 btn btn-primary btn-google text-uppercase btn-outline" href="#">
-                                    <img src="https://img.icons8.com/color/16/000000/google-logo.png" /> Entrar com Google
-                            </a>
+                                <div className="ml-0 btn btn-primary btn-google text-uppercase btn-outline">
+                                    <img src="https://img.icons8.com/color/16/000000/google-logo.png" alt="logo do google"/> Entrar com Google
+                            </div>
                             </div>
                             <div className="row w-75 mr-auto ml-auto mt-5">
-                                <LogInForm handleSuccessfulAuth={this.handleSuccessfulAuth} />
+                                <LogInForm handleSuccessfulAuth={this.handleSuccessfulAuth} {...this.props} />
                             </div>
                         </div>
                     </div> <br />
