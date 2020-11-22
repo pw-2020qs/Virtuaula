@@ -9,8 +9,8 @@ import Dashboard from '../../pages/dashboard/Dashboard';
 import Curso from '../../pages/curso/curso';
 import PrivateRoute from '../PrivateRoute/PrivateRoute';
 import PublicRoute from '../PublicRoute/PublicRoute';
-import { AuthProvider } from '../AuthContext/AuthContext';
-
+import { AuthProvider } from '../../context/AuthContext/AuthContext';
+import Dashboard from '../../pages/dashboard/dashboard';
 
 
 type user = {
@@ -76,6 +76,7 @@ class App extends React.Component<AppProps, AppState> {
             </Route>
             <PublicRoute path="/logIn" exact component={logIn} />
             <PublicRoute path="/logIn/Cadastro" exact component={Cadastro} />
+            <PrivateRoute path="/dashboard" exact component={Dashboard} />
             <PrivateRoute path="/perfil" exact component={Perfil} />
             <PrivateRoute path="/curso/:cursoId" component={Curso} />
           </Switch>

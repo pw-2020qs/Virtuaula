@@ -1,19 +1,19 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import logo from '../../assets/img/logo512.png';
 import LogInForm from '../../components/logInForm/logInForm';
 import { RouteComponentProps } from 'react-router-dom';
 
 
 interface LogInProps extends RouteComponentProps {
-} 
+}
 
 type user = {
     email: string,
     password: string
     name: string,
-  }
+}
 
-export default class LogIn extends React.Component<LogInProps,{}> {
+export default class LogIn extends React.Component<LogInProps, {}> {
     constructor(props: LogInProps) {
         super(props);
 
@@ -24,16 +24,17 @@ export default class LogIn extends React.Component<LogInProps,{}> {
 
     setUser = (user: user) => {
         console.log('estou em setUser', user);
-        sessionStorage .setItem('@virtuaula/email', user.email);
+        sessionStorage.setItem('@virtuaula/email', user.email);
         sessionStorage.setItem('@virtuaula/password', user.password);
         sessionStorage.setItem('@virtuaula/name', user.name);
-      }
+    }
 
     handleSuccessfulAuth(data: user) {
-      
-        this.setUser(data);
+        
+        console.log('Estou no Login Page');
         this.props.history.push("/dashboard");
     }
+
 
     render() {
         return (
@@ -64,3 +65,4 @@ export default class LogIn extends React.Component<LogInProps,{}> {
         )
     }
 }
+
