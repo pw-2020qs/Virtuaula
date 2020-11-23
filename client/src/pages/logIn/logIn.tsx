@@ -9,8 +9,8 @@ interface LogInProps extends RouteComponentProps {
 
 type user = {
     email: string,
-    password: string
     user: string,
+    perfil: string
   }
 
 export default class LogIn extends React.Component<LogInProps,{}> {
@@ -25,6 +25,7 @@ export default class LogIn extends React.Component<LogInProps,{}> {
     setUser = (user: user) => {
         sessionStorage.setItem('@virtuaula/email', user.email);
         sessionStorage.setItem('@virtuaula/user', user.user);
+        sessionStorage.setItem('@virtuaula/perfil', user.perfil)
       }
 
     handleSuccessfulAuth(data: user) {

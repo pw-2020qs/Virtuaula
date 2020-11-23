@@ -24,9 +24,9 @@ export const AuthContext =
 export const AuthProvider = ({ children }: Props) => {
 
 
-    // const [isAuth, setIsAuth] = useState(false);
     const [user, setUser] = useState(""); 
     const [email, setEmail] = useState("");
+    const [perfil, setPerfil] = useState("professor");
     const storageEmail = sessionStorage.getItem('@virtuaula/email');
     const storageUser = sessionStorage.getItem('@virtuaula/user');
 
@@ -37,7 +37,6 @@ export const AuthProvider = ({ children }: Props) => {
         if (storageUser && storageEmail) {
             setEmail(storageEmail);
             setUser(storageUser);
-            // setIsAuth(true);
         }
     },[storageUser, storageEmail]);
 
@@ -45,7 +44,6 @@ export const AuthProvider = ({ children }: Props) => {
     const signIn = useCallback( async () => {
 
         console.log('SignIn', storageUser, storageEmail)
-        // setIsAuth(true);
         if (storageUser && storageEmail) {
             setEmail(storageEmail);
             setUser(storageUser);
@@ -68,9 +66,9 @@ export const AuthProvider = ({ children }: Props) => {
 
         <AuthContext.Provider value={{
             isAuth: (storageUser && storageEmail )? true: false,
-            // setIsAuth,
             user,
             email,
+            perfil,
             signIn,
             signOut
         }}>

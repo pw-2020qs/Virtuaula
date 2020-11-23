@@ -10,20 +10,30 @@ app.use(bodyParser.urlencoded({ extended: true }));
 //Implementação do servidor para front-end de produção
 app.post('/api/login', function (req, res) {
     //Fazer Autorização utilizando o  banco de dados 
-    console.log(req.body);
-    if (1) {
-        // Login autorizado.
-        var user = {
-            email: 'usuario@teste.com',
-            password: 'senha_teste',
-            user: 'Usuário2'
-        };
-        res.status(200).send(user);
+    var email = req.body.email;
+    var password = req.body.password;
+    var perfil = "";
+    var user = "";
+    if (email == 'usuario1@teste.com') {
+        // Login autorizado Aluno
+        perfil = "Aluno";
+        user = "Usuario Aluno";
+    }
+    else if (email == 'usuario2@teste.com') {
+        // Login autorizado Professor
+        perfil = "Aluno";
+        user = "Usuario Professor";
     }
     else {
         // Login não autorizado.
-        res.status(401).send();
+        return res.status(401).send();
     }
+    var data = {
+        user: user,
+        email: email,
+        perfil: perfil
+    };
+    res.status(200).send(data);
 });
 app.get('/api/infocurso', function (req, res) {
     try {

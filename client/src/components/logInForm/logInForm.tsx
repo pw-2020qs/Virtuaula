@@ -6,10 +6,9 @@ import { RouteComponentProps } from 'react-router-dom';
 
 type user = {
     email: string,
-    password: string
     user: string,
+    perfil: string
 }
-
 
 interface LogInFormProps {
     handleSuccessfulAuth: (data: user) => void
@@ -23,7 +22,7 @@ const LogInForm = (props: LogInFormProps) => {
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    // const [logInError, setLoginError] = useState("");
+    const [logInError, setLoginError] = useState("");
     const { signIn } = useAuth();
 
     const handleSignIn = useCallback(() => {
@@ -48,7 +47,7 @@ const LogInForm = (props: LogInFormProps) => {
         )
             .then(async response => {
                 props.handleSuccessfulAuth(await response);
-                await handleSignIn();
+                handleSignIn();
             })
             .then(() => {
                 props.history.push("/dashboard")
