@@ -2,7 +2,7 @@ import React from 'react';
 import {Card} from '../../components/Class_Card/Class_Card'
 import pw from './programacao-web-icon.png'
 import tg from './teoria-dos-grafos.png'
-import { Header_landing as Header } from '../../components/Header_landing/Header_landing'
+import  Header  from '../../components/Header/Header'
 import InfiniteCalendar from 'react-infinite-calendar'
 import 'react-infinite-calendar/styles.css'
 
