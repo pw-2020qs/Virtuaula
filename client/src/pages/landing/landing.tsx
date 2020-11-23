@@ -1,6 +1,6 @@
 import React from 'react';
 import { Header_landing as Header } from '../../components/Header_landing/Header_landing';
-import logo from './logo512.jpeg'
+import logo from '../../assets/img/logo512.jpeg'
 
 
 class Landing extends React.Component {

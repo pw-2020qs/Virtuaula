@@ -1,5 +1,12 @@
 import React from 'react';
 import './App.css';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import Landing from '../../pages/landing/landing';
+import Perfil from '../../pages/perfil/perfil';
+import logIn from '../../pages/logIn/logIn';
+import Cadastro from '../../pages/cadastro/cadastro';
+
+
 const logo = require("./logo.svg") as string;
 
 
@@ -9,68 +16,20 @@ class App extends React.Component {
     post: '',
     responseToPost: '',
   };
-  
-  componentDidMount() {
-    this.callApi()
-      .then(res => this.setState({ response: res.express }))
-      .catch(err => console.log(err));
-  }
-  
-  callApi = async () => {
-    const response = await fetch('/api/hello');
-    const body = await response.json();
-    if (response.status !== 200) throw Error(body.message);
-    
-    return body;
-  };
-  
-  handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
 
-    const response = await fetch('/api/world', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({post: this.state.post}),
-    });
-    const body = await response.text();
-    
-    this.setState({ responseToPost: body });
-  };
-  
-render() {
+  render() {
     return (
-      <div 
-      className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-        <p>{this.state.response}</p>
-        <form onSubmit={this.handleSubmit}>
-          <p>
-            <strong>Post to Server:</strong>
-          </p>
-          <input
-            type="text"
-            value={this.state.post}
-            onChange={e => this.setState({ post: e.target.value })}
-          />
-          <button type="submit">Submit</button>
-        </form>
-        <p>{this.state.responseToPost}</p>
-      </div>
+
+      <Router>
+        <Switch>
+          <Route path="/" exact component={Landing} />
+          <Route path="/logIn" exact component={logIn} />
+          <Route path="/perfil" exact component={Perfil} />
+          <Route path="/logIn/Cadastro" exact component={Cadastro} />
+        </Switch>
+
+      </Router>
+
     );
   }
 }

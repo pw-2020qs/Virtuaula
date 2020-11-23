@@ -14,8 +14,8 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build-hero": "react-scripts build && mv build ../dist/client",
     "build": "react-scripts build",
+    "build-hero": "react-scripts build && mv build ../dist/client",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
