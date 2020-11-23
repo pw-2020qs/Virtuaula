@@ -1,4 +1,4 @@
-import React, { useState, useCallback, } from 'react';
+import React, { useState, useCallback, useEffect, } from 'react';
 import { Link } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth'
 import { RouteComponentProps } from 'react-router-dom';
@@ -23,7 +23,8 @@ const LogInForm = (props: LogInFormProps) => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [logInError, setLoginError] = useState("");
-    const { signIn } = useAuth();
+    const { isAuth, signIn } = useAuth();
+
 
     const handleSignIn = useCallback(() => {
         signIn();
@@ -48,14 +49,28 @@ const LogInForm = (props: LogInFormProps) => {
             .then(async response => {
                 props.handleSuccessfulAuth(await response);
                 handleSignIn();
-            })
-            .then(() => {
-                props.history.push("/dashboard")
+                props.history.push("/dashboard");
+
             })
             .catch(err => {
+                setLoginError(err);
                 console.log("Erro de Login", err);
             })
     };
+
+    useEffect(() => {
+        if (isAuth) {
+
+            return props.history.push("/dashboard")
+        }
+    }, [isAuth])
+
+    useEffect(() => { 
+
+        console.log(logInError);
+
+        setLoginError("");
+    }, [logInError])
 
     return (
         <form onSubmit={handleSubmit}>

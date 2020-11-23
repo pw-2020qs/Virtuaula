@@ -25,7 +25,7 @@ export default class LogIn extends React.Component<LogInProps,{}> {
     setUser = (user: user) => {
         sessionStorage.setItem('@virtuaula/email', user.email);
         sessionStorage.setItem('@virtuaula/user', user.user);
-        sessionStorage.setItem('@virtuaula/perfil', user.perfil)
+        sessionStorage.setItem('@virtuaula/perfil', user.perfil);
       }
 
     handleSuccessfulAuth(data: user) {

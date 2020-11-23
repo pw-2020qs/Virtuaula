@@ -26,29 +26,30 @@ export const AuthProvider = ({ children }: Props) => {
 
     const [user, setUser] = useState(""); 
     const [email, setEmail] = useState("");
-    const [perfil, setPerfil] = useState("professor");
+    const [perfil, setPerfil] = useState("");
     const storageEmail = sessionStorage.getItem('@virtuaula/email');
     const storageUser = sessionStorage.getItem('@virtuaula/user');
+    const storagePerfil = sessionStorage.getItem('@virtuaula/perfil');
 
 
     // Checagem após o page refresh se ha um usuário logado
     useEffect(() => {
-        console.log('useEffect', storageUser, storageEmail)
-        if (storageUser && storageEmail) {
+        if (storageUser && storageEmail && storagePerfil) {
             setEmail(storageEmail);
             setUser(storageUser);
+            setPerfil(storagePerfil);
         }
-    },[storageUser, storageEmail]);
+    },[storageUser, storageEmail, storagePerfil]);
 
 
     const signIn = useCallback( async () => {
 
-        console.log('SignIn', storageUser, storageEmail)
-        if (storageUser && storageEmail) {
+        if (storageUser && storageEmail && storagePerfil) {
             setEmail(storageEmail);
             setUser(storageUser);
+            setPerfil(storagePerfil);
         }
-    }, [storageUser, storageEmail]);
+    }, [storageUser, storageEmail, storagePerfil]);
 
 
     const signOut = useCallback(() => {
@@ -56,9 +57,12 @@ export const AuthProvider = ({ children }: Props) => {
         console.log('SignOut')
 
         sessionStorage.removeItem('@virtuaula/user')
-        sessionStorage.removeItem('@virtuaula/email') 
+        sessionStorage.removeItem('@virtuaula/email')
+        sessionStorage.removeItem('@virtuaula/perfil') 
+
         setUser("");
-        setUser("");
+        setEmail("");
+        setPerfil("");
     },[]);
 
 
