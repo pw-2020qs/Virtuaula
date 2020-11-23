@@ -5,12 +5,11 @@ import Landing from '../../pages/landing/landing';
 import Perfil from '../../pages/perfil/perfil';
 import logIn from '../../pages/logIn/logIn';
 import Cadastro from '../../pages/cadastro/cadastro';
-import Dashboard from '../../pages/dashboard/Dashboard';
+import Dashboard from '../../pages/dashboard/dashboard';
 import Curso from '../../pages/curso/curso';
 import PrivateRoute from '../PrivateRoute/PrivateRoute';
 import PublicRoute from '../PublicRoute/PublicRoute';
 import { AuthProvider } from '../../context/AuthContext/AuthContext';
-import Dashboard from '../../pages/dashboard/dashboard';
 
 
 class App extends React.Component< {}> {

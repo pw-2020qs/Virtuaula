@@ -13,7 +13,7 @@ const PublicRoute = ({ component: Component, ...rest }: any) => {
         render={(props) => !isAuth ?
             <Component {...props} />
             :
-            <Redirect to={{ pathname: "/perfil", state: { from: props.location } }} />
+            <Redirect to={{ pathname: "/dashboard", state: { from: props.location } }} />
                 }
     />)
 }
