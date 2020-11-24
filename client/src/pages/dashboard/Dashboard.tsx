@@ -2,7 +2,7 @@ import React from 'react';
 import {Card} from '../../components/Class_Card/Class_Card'
 import pw from './programacao-web-icon.png'
 import tg from './teoria-dos-grafos.png'
-import { Header_landing as Header } from '../../components/Header_landing/Header_landing'
+import  Header  from '../../components/Header/Header'
 import InfiniteCalendar from 'react-infinite-calendar'
 import 'react-infinite-calendar/styles.css'
 
@@ -25,9 +25,9 @@ export default class Dashboard extends React.Component{
                 <div className='card-header'>Dashboard</div>
                 <div id="dashboard" className='row'>
                     <div id='cards' className='col-md-7 row'>
-                    <Card title='Programação Web' imgsrc={pw}/>
-                    <Card title='Teoria dos grafos' imgsrc={tg}/>
-                    <Card title='Compiladores' imgsrc={pw}/>
+                    <Card title='Programação Web' id="programacaoweb" imgsrc={pw}/>
+                    <Card title='Teoria dos grafos' id="teoriagrafos" imgsrc={tg}/>
+                    <Card title='Compiladores' id="compiladores" imgsrc={pw}/>
                     </div>
                     <div id='novos-cursos' className='col-md-2 card' style={{backgroundColor: "#fceca3"}}>
                         <div className='card-body'>

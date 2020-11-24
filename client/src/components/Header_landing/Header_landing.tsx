@@ -16,12 +16,12 @@ export function Header_landing() {
                     <div className="nav-item navbar-nav">
 
 
-                        <a className="nav-item nav-link " href="#">Sobre</a>
-                        <a className="nav-item nav-link" href="#">Universidade</a>
+                        <div className="nav-item nav-link " >Sobre</div>
+                        <div className="nav-item nav-link" >Universidade</div>
                     </div >
                     <div className="nav-item navbar-nav">
 
-                        <a className="nav-item nav-link" href="#">Contato</a>
+                        <div className="nav-item nav-link" >Contato</div>
                         <Link className="nav-item nav-link" to={'./logIn'}>Entrar</Link>
                     </div>
                 </div>

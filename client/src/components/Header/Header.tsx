@@ -1,34 +1,43 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import logo from '../../assets/img/logo_small.png'
+import useAuth from '../../hooks/useAuth';
+import './Header.css'
 
 export default function Header() {
+    const { user, signOut } = useAuth();
+
+    
+
     return (
-        <nav className="navbar navbar-expand-lg  bg-light navbar-light pb-0 pt-0 margin shadow-sm" style={{height:"2.8rem"}}>
+        <nav className="navbar navbar-expand bg-light navbar-light pb-0 pt-0 margin shadow-sm" id="header">
             <div className="h-100 overflow-hidden navbar-brand h-100" >
-                <img className="h-100"  src={logo} alt=""/>
+               <Link to="/"> <img className="h-100" src={logo} alt="" /> </Link>
             </div>
             <div className="collapse navbar-collapse d-flex justify-content-between ">
                 <div className="nav-item dropdown">
-                    <a className="nav-link  dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <div className="nav-link  dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Cursos
-                        </a>
-                    <div className="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                        <a className="dropdown-item" href="#">Configurações</a>
-                        <a className="dropdown-item" href="#">...</a>
-                        <a className="dropdown-item" href="#">...</a>
+                    </div>
+
+                    {/* Cursos */}
+
+                </div>
+                <div className="nav-item btn-group">
+                    <Link to="/dashboard" type="button" className="btn">{user}</Link>
+                    <button type="button" className="btn dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span className="sr-only">Toggle Dropdown</span>
+                    </button>
+                    <div className="dropdown-menu dropdown-menu-right">
+                        <Link className="dropdown-item" to={`/perfil`}>Configurações</Link>
+                        <div className="dropdown-divider"></div>
+                        <button className="dropdown-item" onClick={signOut}>Sair</button>
                     </div>
                 </div>
-                <div className="nav-item dropdown">
-                    <a className="nav-link dropdown-toggle" href="../../../public/perfil.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Nome
-                        </a>
-                    <div className="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                        <a className="dropdown-item" href="#">Configurações</a>
-                        <a className="dropdown-item" href="#">...</a>
-                        <a className="dropdown-item" href="#">...</a>
-                    </div>
-                </div>
-            </div>
+
+
+                
+            </div >
         </nav >
     )
 }

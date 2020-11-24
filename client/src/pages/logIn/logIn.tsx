@@ -3,20 +3,33 @@ import logo from '../../assets/img/logo512.png';
 import LogInForm from '../../components/logInForm/logInForm';
 import { RouteComponentProps } from 'react-router-dom';
 
-interface LogInProps extends RouteComponentProps<any> {
+
+interface LogInProps extends RouteComponentProps {
 } 
 
+type user = {
+    email: string,
+    user: string,
+    perfil: string
+  }
 
 export default class LogIn extends React.Component<LogInProps,{}> {
     constructor(props: LogInProps) {
         super(props);
 
         this.handleSuccessfulAuth = this.handleSuccessfulAuth.bind(this);
+        this.setUser = this.setUser.bind(this);
     }
 
-    handleSuccessfulAuth(data: string) {
-        // this.props.handleLogin(data);
-        // this.props.history.push("/dashboard");
+
+    setUser = (user: user) => {
+        sessionStorage.setItem('@virtuaula/email', user.email);
+        sessionStorage.setItem('@virtuaula/user', user.user);
+        sessionStorage.setItem('@virtuaula/perfil', user.perfil);
+      }
+
+    handleSuccessfulAuth(data: user) {
+        this.setUser(data);
     }
 
 
@@ -30,12 +43,12 @@ export default class LogIn extends React.Component<LogInProps,{}> {
                     <div className="d-flex justify-content-center w-100">
                         <div className="container justify-content-center align-self-center">
                             <div className="row w-75 mr-auto ml-auto mt-5">
-                                <a className="ml-0 btn btn-primary btn-google text-uppercase btn-outline" href="#">
-                                    <img src="https://img.icons8.com/color/16/000000/google-logo.png" /> Entrar com Google
-                            </a>
+                                <div className="ml-0 btn btn-primary btn-google text-uppercase btn-outline">
+                                    <img src="https://img.icons8.com/color/16/000000/google-logo.png" alt="logo do google"/> Entrar com Google
+                            </div>
                             </div>
                             <div className="row w-75 mr-auto ml-auto mt-5">
-                                <LogInForm handleSuccessfulAuth={this.handleSuccessfulAuth} />
+                                <LogInForm handleSuccessfulAuth={this.handleSuccessfulAuth} {...this.props} />
                             </div>
                         </div>
                     </div> <br />
@@ -49,3 +62,4 @@ export default class LogIn extends React.Component<LogInProps,{}> {
         )
     }
 }
+
