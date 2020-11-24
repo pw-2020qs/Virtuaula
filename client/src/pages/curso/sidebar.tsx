@@ -64,14 +64,10 @@ export const Sidebar = (props: { cursoNome: string }) => {
                 <div className="ml-auto mr-auto sidebar-sticky d-flex flex-column">
                     <ul className="p-4 list-group">
                         <h2 className="m-2 mb-4">{nome}</h2>
-
                         {perfil === 'Aluno' ? <SidebarAluno /> : <SidebarProf />}
-
                     </ul>
-
                 </div>
             </nav>
-
         </div>
     )
 }
