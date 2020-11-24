@@ -21,7 +21,7 @@ app.post('/api/login', function (req, res) {
     }
     else if (email == 'usuario2@teste.com') {
         // Login autorizado Professor
-        perfil = "Aluno";
+        perfil = "Professor";
         user = "Usuario Professor";
     }
     else {

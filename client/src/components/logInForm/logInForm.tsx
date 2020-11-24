@@ -62,7 +62,7 @@ const LogInForm = (props: LogInFormProps) => {
 
             return props.history.push("/dashboard")
         }
-    }, [isAuth])
+    }, [props,isAuth])
 
     useEffect(() => { 
 
