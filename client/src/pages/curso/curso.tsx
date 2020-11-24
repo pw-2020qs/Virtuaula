@@ -2,19 +2,12 @@ import React, { Component } from 'react';
 import { RouteComponentProps } from 'react-router-dom';
 import Header from '../../components/Header/Header';
 import ListaAtividades from '../../components/ListaAtividade/listaAtividade'
-<<<<<<< HEAD
 import { Sidebar } from './sidebar'
 import InfiniteCalendar from 'react-infinite-calendar'
 import 'react-infinite-calendar/styles.css'
 type CursoState = {
     cursoId: string;
     cursoNome: string,
-=======
-
-
-type CursoState = {
-    cursoId: string;
->>>>>>> 72e2fc44da3361178c341b8caf53ac970c45124c
     listaAtividade: string[],
 };
 type CursoProps = {};

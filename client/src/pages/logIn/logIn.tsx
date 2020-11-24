@@ -9,13 +9,8 @@ interface LogInProps extends RouteComponentProps {
 
 type user = {
     email: string,
-<<<<<<< HEAD
     user: string,
     perfil: string
-=======
-    password: string
-    user: string,
->>>>>>> 72e2fc44da3361178c341b8caf53ac970c45124c
   }
 
 export default class LogIn extends React.Component<LogInProps,{}> {
