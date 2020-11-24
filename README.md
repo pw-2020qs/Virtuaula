@@ -88,7 +88,7 @@ Roda a aplicação apenas Client Side.
 
 1. Na página de Inicial acessar o link 'Entrar'
 2. Na pagina de Login entrar com o email e senha do usuário.(a senha não é importante). \
-   . Para perfil Aluno: usuario1@teste.com
+   . Para perfil Aluno: usuario1@teste.com \
    . Para perfil Professor: usuario2@teste.com
 3. na pagina do Dashboard, você pode acessar os cursos diponíveis clicando em um Card.
 
