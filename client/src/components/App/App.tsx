@@ -5,7 +5,7 @@ import Landing from '../../pages/landing/landing';
 import Perfil from '../../pages/perfil/perfil';
 import logIn from '../../pages/logIn/logIn';
 import Cadastro from '../../pages/cadastro/cadastro';
-
+import Atividade from "../../pages/atividade/atividade";
 
 const logo = require("./logo.svg") as string;
 
@@ -26,6 +26,7 @@ class App extends React.Component {
           <Route path="/logIn" exact component={logIn} />
           <Route path="/perfil" exact component={Perfil} />
           <Route path="/logIn/Cadastro" exact component={Cadastro} />
+          <Route path="/atividade" exact component={Atividade} />
         </Switch>
 
       </Router>
