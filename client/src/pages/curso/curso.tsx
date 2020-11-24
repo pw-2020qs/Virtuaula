@@ -7,6 +7,7 @@ import InfiniteCalendar from 'react-infinite-calendar'
 import 'react-infinite-calendar/styles.css'
 type CursoState = {
     cursoId: string;
+    cursoNome: string,
     listaAtividade: string[],
 };
 type CursoProps = {};
@@ -17,26 +18,28 @@ export default class Curso extends Component<CursoProps & RouteComponentProps<{ 
         const { cursoId } = this.props.match.params;
         this.state = {
             cursoId: cursoId,
+            cursoNome: "",
             listaAtividade: []
         }
         this.loadCursoInfo = this.loadCursoInfo.bind(this);
+        this.handleCursoInfo = this.handleCursoInfo.bind(this);
     }
 
     // Espera a página carregar para carregar informações
     componentDidMount() {
-        window.addEventListener('load', () => { this.loadCursoInfo() })
+        this.loadCursoInfo();
     }
 
     //Busca informações do curso no banco de dados
     loadCursoInfo = async () => {
         let cursoId = this.state.cursoId;
-        await fetch(`/api/infocurso?numero=${cursoId}`).then(async response => {
+        await fetch(`/api/infocurso?id=${cursoId}`).then(async response => {
 
             return await response.json();
         })
             .then(async responseJson => {
 
-                this.handleCursoInfo(responseJson.listaAtividade);
+                this.handleCursoInfo(responseJson);
             })
             .catch(err => {
 
@@ -46,14 +49,16 @@ export default class Curso extends Component<CursoProps & RouteComponentProps<{ 
 
 
     //Processa informações do curso
-    handleCursoInfo(data: string[]) {
+    handleCursoInfo(data: {cursoNome:string, listaAtividades: string[]}) {
         this.setState({
-            listaAtividade: data
+            cursoNome: data.cursoNome,
+            listaAtividade: data.listaAtividades
         })
     }
 
     render() {
         const width = window.innerWidth / 2.5;
+        const height = window.innerHeight*0.75;
         const wrapper = {
             backgroundColor: "#fceca3",
             display: 'flex',
@@ -65,13 +70,14 @@ export default class Curso extends Component<CursoProps & RouteComponentProps<{ 
                 <Header />
                 <div className="d-flex" style={wrapper}>
                     {/* <!-- Sidebar --> */}
-                    <Sidebar />
-                    {/* Calendario */}
+                    <Sidebar cursoNome={this.state.cursoNome}/>
+                    
                     <div className='p-4 mr-5'>
 
+                    {/* Calendario */}
                         <InfiniteCalendar
                             width={width}
-                            height={width}
+                            height={height}
                             theme=
                             {{
                                 headerColor: '#f7914D',

@@ -53,13 +53,15 @@ app.post('/api/login', function (req, res) {
 app.get('/api/infocurso', function (req, res) {
 
   try {
-    if (req.query.numero) {
-      const cursoId = req.query.numero;
+    if (req.query.id) {
+      const cursoId = req.query.id;
+      console.log('Enviando info do curso:', cursoId);
+
       //Procurar Informações do Curso no Banco de dados
       let data = ['Atividade 1', 'Atividade 2', 'Atividade 3'];
 
       if (data) {
-        res.status(200).send({ listaAtividade: data });
+        res.status(200).send({ cursoNome:'Programação para Web', listaAtividade: data });
       } else {
         res.status(404).send(); //Informação git do curso não encontrada
       }
@@ -72,7 +74,7 @@ app.get('/api/infocurso', function (req, res) {
 app.post('/api/cadastro', function (req, res) {
 
   //Fazer Novo registro no  banco de dados 
-  console.log("do Servidor", req.body);
+  console.log("Cadastrado no Servidor", req.body);
 
   if (req.body.password == req.body.passwordConf) {
     res.status(201).send(req.body); // Confirmação novo cadastro

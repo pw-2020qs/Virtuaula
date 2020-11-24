@@ -1,10 +1,14 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 
 function Card(props: any) {
+
     return (
         <div className='card col-md-6' style={{backgroundColor: "#fceca3"}}>
+            <Link to={`/curso/${props.id}`}>
             <img className='card-img-top' src={props.imgsrc} alt=""/>
+            </Link>
             <div className='card-body'>
                 <h5 className='card-title'>{props.title}</h5>
 

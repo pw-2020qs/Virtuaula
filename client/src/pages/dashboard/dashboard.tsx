@@ -25,9 +25,9 @@ export default class Dashboard extends React.Component{
                 <div className='card-header'>Dashboard</div>
                 <div id="dashboard" className='row'>
                     <div id='cards' className='col-md-7 row'>
-                    <Card title='Programação Web' imgsrc={pw}/>
-                    <Card title='Teoria dos grafos' imgsrc={tg}/>
-                    <Card title='Compiladores' imgsrc={pw}/>
+                    <Card title='Programação Web' id="programacaoweb" imgsrc={pw}/>
+                    <Card title='Teoria dos grafos' id="teoriagrafos" imgsrc={tg}/>
+                    <Card title='Compiladores' id="compiladores" imgsrc={pw}/>
                     </div>
                     <div id='novos-cursos' className='col-md-2 card' style={{backgroundColor: "#fceca3"}}>
                         <div className='card-body'>
