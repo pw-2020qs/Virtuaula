@@ -31,6 +31,7 @@ app.post('/api/login', function (req, res) {
     perfil = "Aluno";
     user = "Usuario Aluno";
 
+<<<<<<< HEAD
   } else if (email == 'usuario2@teste.com') {
     // Login autorizado Professor
     perfil = "Aluno";
@@ -47,6 +48,45 @@ app.post('/api/login', function (req, res) {
     perfil
   }
   res.status(200).send(data);
+=======
+  //Fazer Autorização utilizando o  banco de dados 
+  console.log(req.body);
+  if(1){
+    // Login autorizado.
+    let user: user = {
+      email: 'usuario@teste.com',
+      password: 'senha_teste',
+      user: 'Usuário2'
+    } 
+    res.status(200).send(user);
+
+    
+  } else {
+    // Login não autorizado.
+    res.status(401).send();
+  }
+
+})
+
+
+app.get('/api/infocurso', function(req,res) {
+
+  try {
+    if(req.query.numero) {
+      const cursoId = req.query.numero; 
+      //Procurar Informações do Curso no Banco de dados
+      let data = ['Atividade 1', 'Atividade 2', 'Atividade 3'];
+
+      if(data) {
+        res.status(200).send({listaAtividade: data});
+      }else {
+        res.status(404).send(); //Informação git do curso não encontrada
+      }
+    }
+    }catch (err) {
+      res.status(500).json({err: err});
+    }
+>>>>>>> 72e2fc44da3361178c341b8caf53ac970c45124c
 })
 
 

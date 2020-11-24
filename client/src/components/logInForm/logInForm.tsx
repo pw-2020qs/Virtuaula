@@ -25,7 +25,6 @@ const LogInForm = (props: LogInFormProps) => {
     const [logInError, setLoginError] = useState("");
     const { isAuth, signIn } = useAuth();
 
-
     const handleSignIn = useCallback(() => {
         signIn();
     }, [signIn]);
