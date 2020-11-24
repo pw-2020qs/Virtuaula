@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import { RouteComponentProps } from 'react-router-dom';
 import Header from '../../components/Header/Header';
 import ListaAtividades from '../../components/ListaAtividade/listaAtividade'
-
-
+import { Sidebar } from './sidebar'
+import InfiniteCalendar from 'react-infinite-calendar'
+import 'react-infinite-calendar/styles.css'
 type CursoState = {
     cursoId: string;
     listaAtividade: string[],
@@ -22,8 +23,8 @@ export default class Curso extends Component<CursoProps & RouteComponentProps<{ 
     }
 
     // Espera a página carregar para carregar informações
-     componentDidMount() {
-         window.addEventListener('load', () => { this.loadCursoInfo() })
+    componentDidMount() {
+        window.addEventListener('load', () => { this.loadCursoInfo() })
     }
 
     //Busca informações do curso no banco de dados
@@ -51,14 +52,41 @@ export default class Curso extends Component<CursoProps & RouteComponentProps<{ 
         })
     }
 
-
     render() {
+        const width = window.innerWidth / 2.5;
+        const wrapper = {
+            backgroundColor: "#fceca3",
+            display: 'flex',
+            width: '100%',
+            alignItems: 'stretch'
+        }
         return (
             <div>
-                <Header/>
-                <h1>Curso</h1>
-                <ListaAtividades listaAtividade={this.state.listaAtividade} />
-            </div>
+                <Header />
+                <div className="d-flex" style={wrapper}>
+                    {/* <!-- Sidebar --> */}
+                    <Sidebar />
+                    {/* Calendario */}
+                    <div className='p-4 mr-5'>
+
+                        <InfiniteCalendar
+                            width={width}
+                            height={width}
+                            theme=
+                            {{
+                                headerColor: '#f7914D',
+                                selectionColor: '#f7914D',
+                                weekdayColor: '#f7914D',
+                                floatingNav: {
+                                    background: '#fceca3',
+                                }
+                            }}
+
+                        />
+                    </div>
+                </div>
+            </div >
+
         )
     }
 

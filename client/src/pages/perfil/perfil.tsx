@@ -10,6 +10,12 @@ export default class Perfil extends React.Component {
         return (
             <div className="min-h-100">
                 <Header/>
+
+            <div className="">
+
+
+            </div>
+
             </div>
         )
     }
