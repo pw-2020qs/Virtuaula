@@ -1,1 +1,3 @@
 [1117/151655.550:ERROR:directory_reader_win.cc(43)] FindFirstFile: O sistema não pode encontrar o caminho especificado. (0x3)
+[1122/130241.412:ERROR:file_io.cc(90)] ReadExactly: expected 36, observed 0
+[1122/130318.937:ERROR:directory_reader_win.cc(43)] FindFirstFile: O sistema não pode encontrar o caminho especificado. (0x3)

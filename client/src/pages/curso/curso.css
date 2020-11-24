@@ -1,0 +1,10 @@
+@media (max-width: 800px) {
+    #curso-wrapper {
+    min-width: max-content;
+    }
+}
+
+#curso-wrapper {
+    width: 100vw;
+    overflow-y: hidden;
+    }
