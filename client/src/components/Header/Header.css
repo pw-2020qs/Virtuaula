@@ -1,0 +1,10 @@
+@media (min-width: 500px) {
+    #header {
+        height: 2.8rem;
+    }
+}
+
+#header {
+    min-width: 100vw;
+    width: 100%;
+}

@@ -64,12 +64,14 @@ class CadastroForm extends React.Component<CadastroFormProps, CadastroFormState>
                 this.props.handleSuccessfulRegister(await response.text())
             }
             else {
-                throw Error(`${response.status}`);
+                throw ({status: response.status, message: await response.text()});
 
             }
         })
             .catch(err => {
-                console.log("Erro de Login", err);
+                console.log("Erro de Login", err.status);
+                alert(err.message)
+
             })
     };
 

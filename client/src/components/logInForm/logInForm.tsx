@@ -23,12 +23,12 @@ const LogInForm = (props: LogInFormProps) => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [logInError, setLoginError] = useState("");
-    const { isAuth, signIn } = useAuth();
+    const { signIn } = useAuth();
 
     const handleSignIn = useCallback(() => {
         signIn();
+        window.location.reload();
     }, [signIn]);
-
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
 
@@ -48,7 +48,6 @@ const LogInForm = (props: LogInFormProps) => {
             .then(async response => {
                 props.handleSuccessfulAuth(await response);
                 handleSignIn();
-                props.history.push("/dashboard");
 
             })
             .catch(err => {
@@ -56,13 +55,6 @@ const LogInForm = (props: LogInFormProps) => {
                 console.log("Erro de Login", err);
             })
     };
-
-    useEffect(() => {
-        if (isAuth) {
-
-            return props.history.push("/dashboard")
-        }
-    }, [props,isAuth])
 
     useEffect(() => { 
 

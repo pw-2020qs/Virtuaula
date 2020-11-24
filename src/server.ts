@@ -1,4 +1,6 @@
 import express = require('express');
+import { type } from 'os';
+import { string } from 'prop-types';
 const bodyParser = require('body-parser');
 const path = require('path');
 
@@ -12,6 +14,12 @@ type user = {
   email: string,
   user: string,
   perfil: string
+}
+
+type cursoData = {
+  programacaoweb: string, 
+  teoriagrafos: string, 
+  compiladores: string
 }
 
 
@@ -39,7 +47,7 @@ app.post('/api/login', function (req, res) {
   } else {
     // Login não autorizado.
     return res.status(401).send();
-    
+
   }
   let data: user = {
     user,
@@ -54,14 +62,15 @@ app.get('/api/infocurso', function (req, res) {
 
   try {
     if (req.query.id) {
-      const cursoId = req.query.id;
+      const cursoId = <string>req.query.id;
       console.log('Enviando info do curso:', cursoId);
 
       //Procurar Informações do Curso no Banco de dados
+      const cursoData: cursoData = { programacaoweb: 'Programação para Web', teoriagrafos: 'Teoria dos Grafos', compiladores: 'Compiladores' }
       let data = ['Atividade 1', 'Atividade 2', 'Atividade 3'];
-
+      let cursoNome = cursoData[cursoId as keyof cursoData]
       if (data) {
-        res.status(200).send({ cursoNome:'Programação para Web', listaAtividade: data });
+        res.status(200).send({ cursoNome: cursoNome, listaAtividade: data });
       } else {
         res.status(404).send(); //Informação git do curso não encontrada
       }
@@ -79,7 +88,7 @@ app.post('/api/cadastro', function (req, res) {
   if (req.body.password == req.body.passwordConf) {
     res.status(201).send(req.body); // Confirmação novo cadastro
   } else {
-    res.status(400).send(req.body); // Erro no Cadastro
+    res.status(400).send('Por favor verifique sua senha'); // Erro no Cadastro
   }
 })
 

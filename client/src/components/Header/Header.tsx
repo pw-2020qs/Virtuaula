@@ -2,12 +2,15 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../../assets/img/logo_small.png'
 import useAuth from '../../hooks/useAuth';
+import './Header.css'
 
 export default function Header() {
     const { user, signOut } = useAuth();
 
+    
+
     return (
-        <nav className="navbar navbar-expand-lg  bg-light navbar-light pb-0 pt-0 margin shadow-sm" style={{ height: "2.8rem" }}>
+        <nav className="navbar navbar-expand bg-light navbar-light pb-0 pt-0 margin shadow-sm" id="header">
             <div className="h-100 overflow-hidden navbar-brand h-100" >
                <Link to="/"> <img className="h-100" src={logo} alt="" /> </Link>
             </div>

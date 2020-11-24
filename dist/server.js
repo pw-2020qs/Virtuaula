@@ -41,9 +41,11 @@ app.get('/api/infocurso', function (req, res) {
             var cursoId = req.query.id;
             console.log('Enviando info do curso:', cursoId);
             //Procurar Informações do Curso no Banco de dados
+            var cursoData = { programacaoweb: 'Programação para Web', teoriagrafos: 'Teoria dos Grafos', compiladores: 'Compiladores' };
             var data = ['Atividade 1', 'Atividade 2', 'Atividade 3'];
+            var cursoNome = cursoData[cursoId];
             if (data) {
-                res.status(200).send({ cursoNome: 'Programação para Web', listaAtividade: data });
+                res.status(200).send({ cursoNome: cursoNome, listaAtividade: data });
             }
             else {
                 res.status(404).send(); //Informação git do curso não encontrada
@@ -61,7 +63,7 @@ app.post('/api/cadastro', function (req, res) {
         res.status(201).send(req.body); // Confirmação novo cadastro
     }
     else {
-        res.status(400).send(req.body); // Erro no Cadastro
+        res.status(400).send('Por favor verifique sua senha'); // Erro no Cadastro
     }
 });
 //Implementação do servidor para front-end de produção

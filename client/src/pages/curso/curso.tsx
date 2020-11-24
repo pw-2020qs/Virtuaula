@@ -5,6 +5,8 @@ import ListaAtividades from '../../components/ListaAtividade/listaAtividade'
 import { Sidebar } from './sidebar'
 import InfiniteCalendar from 'react-infinite-calendar'
 import 'react-infinite-calendar/styles.css'
+import './curso.css'
+
 type CursoState = {
     cursoId: string;
     cursoNome: string,
@@ -66,7 +68,7 @@ export default class Curso extends Component<CursoProps & RouteComponentProps<{ 
             alignItems: 'stretch'
         }
         return (
-            <div>
+            <div id='curso-wrapper'>
                 <Header />
                 <div className="d-flex" style={wrapper}>
                     {/* <!-- Sidebar --> */}
