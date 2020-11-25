@@ -18,7 +18,7 @@ function Event(props: any) {
 export default class Dashboard extends React.Component{
     render(){
         return (
-            <div>
+            <div className="page">
                 <Header/>
             <div className='container p-4'>
             <div className='card'>

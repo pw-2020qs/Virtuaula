@@ -1,18 +1,22 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
-type  AtividadesInfo = {
-    listaAtividade: string[]
+
+type AtividadesInfo = {
+    listaAtividades: string[]
 }
 
 
-const ListaAtividades = ({listaAtividade}:AtividadesInfo) => {
+const ListaAtividades = ({ listaAtividades }: AtividadesInfo) => {
 
 
     return (
         <div>
-            {
-                listaAtividade.map(atividade => <p key={atividade}>{atividade} <br /> </p>)
-            }
+            {listaAtividades.map(atividade => (<>
+                <Link to="/atividade" key={atividade} className="list-group-item list-group-item-action mb-2">
+                <i className="fas fa-edit mr-2"></i>{atividade}
+                </Link>
+            </>))}
         </div>
     )
 
