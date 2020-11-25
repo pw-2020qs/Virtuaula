@@ -29,9 +29,9 @@ const SidebarProf = () => {
                     Atividades
                             </div>
                 <div className="collapse multi-collapse" id="atividadeMenu" >
-                    <Link className="list-group-item dropdown-item" to="/">Nova Atividade</Link>
-                    <Link className="list-group-item dropdown-item" to="/">Editar Atividade</Link>
-                    <Link className="list-group-item dropdown-item" to="/">Deletar atividade</Link>
+                    <Link className="list-group-item dropdown-item" to="/atividade/nova">Nova Atividade</Link>
+                    <Link className="list-group-item dropdown-item" to="/atividade/nova">Editar Atividade</Link>
+                    <Link className="list-group-item dropdown-item" to="/atividade/nova">Deletar atividade</Link>
                 </div>
             </div>
 
