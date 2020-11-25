@@ -3,6 +3,16 @@
 
 # Virtuaula - Plataforma de EaD
 
+| ![GitHub release (latest by date including pre-releases)](https://img.shields.io/github/v/release/pw-2020qs/Virtuaula?include_prereleases)
+  | ![GitHub last commit](https://img.shields.io/github/last-commit/pw-2020qs/Virtuaula)  | ![GitHub issues](https://img.shields.io/github/issues-raw/pw-2020qs/Virtuaula)
+  |
+|---|---|---|
+| ![GitHub pull requests](https://img.shields.io/github/issues-pr/pw-2020qs/Virtuaula)
+  | ![GitHub All Releases](https://img.shields.io/github/downloads/pw-2020qs/Virtuaula/total)
+
+![GitHub](https://img.shields.io/github/license/pw-2020qs/Virtuaula)  | ![GitHub](https://img.shields.io/github/license/pw-2020qs/Virtuaula)
+  |
+
 ![GitHub release (latest by date including pre-releases)](https://img.shields.io/github/v/release/pw-2020qs/Virtuaula?include_prereleases)
 
 ![GitHub last commit](https://img.shields.io/github/last-commit/pw-2020qs/Virtuaula)
