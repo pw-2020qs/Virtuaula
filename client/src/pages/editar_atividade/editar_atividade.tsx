@@ -27,7 +27,7 @@ const atividadeExemplo: TipoAtividade = {
 export default class EditarAtividade extends React.Component{
     render(){
         return(
-            <div>
+            <div className="page">
                 <Header/>
                 <div className='container'>
                     <div className='row'>

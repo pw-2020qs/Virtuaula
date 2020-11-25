@@ -24,7 +24,7 @@ const atividadeExemplo: TipoAtividade = {
 export default class Atividade extends React.Component{
     render(){
         return(
-            <div>
+            <div className="page">
                 <Header/>
                 {atividadeExemplo.questoes.map((questao, index) =>{
                     return(
