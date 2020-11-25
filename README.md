@@ -4,17 +4,9 @@
 # Virtuaula - Plataforma de EaD
 
 
-[GitHub release (latest by date including pre-releases)](https://img.shields.io/github/v/release/pw-2020qs/Virtuaula?include_prereleases)
+![GitHub release (latest by date including pre-releases)](https://img.shields.io/github/v/release/pw-2020qs/Virtuaula?include_prereleases)  ![GitHub last commit](https://img.shields.io/github/last-commit/pw-2020qs/Virtuaula) ![GitHub issues](https://img.shields.io/github/issues-raw/pw-2020qs/Virtuaula)
 
-[GitHub last commit](https://img.shields.io/github/last-commit/pw-2020qs/Virtuaula)
-
-[GitHub issues](https://img.shields.io/github/issues-raw/pw-2020qs/Virtuaula)
-
-![GitHub pull requests](https://img.shields.io/github/issues-pr/pw-2020qs/Virtuaula)
-
-[GitHub All Releases](https://img.shields.io/github/downloads/pw-2020qs/Virtuaula/total)
-
-[GitHub](https://img.shields.io/github/license/pw-2020qs/Virtuaula)
+![GitHub pull requests](https://img.shields.io/github/issues-pr/pw-2020qs/Virtuaula) ![GitHub All Releases](https://img.shields.io/github/downloads/pw-2020qs/Virtuaula/total) ![GitHub](https://img.shields.io/github/license/pw-2020qs/Virtuaula)
 
 
 <!-- 
@@ -24,8 +16,7 @@ Aqui será adicionado um video ou gif demo do projeto
 -->
 
 # Indice
-
-- [Início](#Virtuaula - Plataforma de EaD)
+- [Início](#Virtuaula)
 - [Indice](#Indice)
 - [Instalação](#Instalação)
 - [Desenvolvimento](#Dev)
@@ -39,7 +30,7 @@ Aqui será adicionado um video ou gif demo do projeto
 
 ### `npm install`
 
-Instalará as depmpendências do lado Server.
+Instalará as dependências do lado Server.
 
 ### `npm run install`
 
@@ -47,21 +38,18 @@ Instalará as dependências do lado Client.
 
 ### `yarn/npm run dev`
 
-Rodda o app em modo de desenvolvimento nos lados client e server.<br/>
-De modo default ```create-react-app``` roda o webpack-dev na porta [http://localhost:3000](http://localhost:3000), abra o navegador nesta porta para acessar o Client.
+Roda o app em modo de desenvolvimento nos lados client e server.<br/>
+De modo default ```create-react-app``` roda o webpack-dev do React na porta [http://localhost:3000](http://localhost:3000), abra o navegador nesta porta para acessar o Client.
 O servidor está configurado para rodar na porta [http://localhost:5000](http//localhost:5000).
 
-Tanto o server quanto o client estão configurados para rodar com ```Nodemon```, portanto alterações serão atualizadas automaticamente.<br />
+O server está configurado para rodar com ```tsc-watch```, portanto alterações serão atualizadas automaticamente.<br />
 Erros lint apareceção no console.
 
 
 ### `yarn/npm run build`
 
-Constroi o app Client para produção na pasta `build`.<br />
+Constroi o app Client para produção na pasta `client/build`.<br />
 <!-- It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed! -->
 
  # Dev 
  [Voltar](#Indice)
@@ -73,7 +61,6 @@ Roda a app em Server side.
 ### `yarn/npm run client`
 
 Roda a aplicação apenas Client Side.
-
 
 `API`
 |  URL | Methodo  | pacote | arquivo |  descrição |
@@ -91,28 +78,22 @@ Roda a aplicação apenas Client Side.
 2. Na pagina de Login entrar com o email e senha do usuário.(a senha não é importante). \
    . Para perfil Aluno: usuario1@teste.com \
    . Para perfil Professor: usuario2@teste.com
-3. na pagina do Dashboard, você pode acessar os cursos diponíveis clicando em um Card.
-
+3. Na pagina do Dashboard, você pode acessar os cursos diponíveis clicando em um Card. \
+4. Na pagina do curso o aluno pode acessar aulas e atividades disponíveis. O professor poderá iniciar novas aulas, criar novas lousas ou gerenciar as atividades do curso.\
+5. O usuário poderá ver e editar as informações do seu perfil na pagina ``/perfil`` que pode ser acessada pela barra de navegação.\
 
 <!-- Adicionar informações sobre o uso do App -->
-
-
 
  # Contribuidores 
  [Voltar](#Indice)
 
-
 <!-- Adicionar gerador automatico de imagem dos contribuidores caso o repositório vire público -->
-
-
-
-
-
+<a href="https://github.com/pw-2020qs/Virtuaula/graphs/contributors">
+  <img src="https://contributors-img.web.app/image?repo=pw-2020qs/Virtuaula" />
+</a>
 
 # Outras Informações 
 [Voltar](#Indice)
-
-
 
 ## Learn More about Create React App
 
