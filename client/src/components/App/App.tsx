@@ -25,10 +25,8 @@ import {
 
 
 
-interface AppProps extends RouteComponentProps<any> {
-}
 
-class App extends React.Component<AppProps> {
+class App extends React.Component{
   render() {
     return (
       <AuthProvider>
@@ -36,7 +34,7 @@ class App extends React.Component<AppProps> {
           <Route render={({ location }) => (
             <TransitionGroup>
               <CSSTransition
-                in={this.props.match != null}
+                in={location!= null}
                 timeout={200}
                 classNames="fade"
                 unmountOnExit
