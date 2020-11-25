@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { RouteComponentProps } from 'react-router-dom';
 import Header from '../../components/Header/Header';
-import ListaAtividades from '../../components/ListaAtividade/listaAtividade'
 import { Sidebar } from './sidebar'
 import InfiniteCalendar from 'react-infinite-calendar'
 import 'react-infinite-calendar/styles.css'
@@ -10,7 +9,8 @@ import './curso.css'
 type CursoState = {
     cursoId: string;
     cursoNome: string,
-    listaAtividade: string[],
+    listaAtividades: string[],
+    listaAtiva: boolean
 };
 type CursoProps = {};
 
@@ -18,19 +18,30 @@ export default class Curso extends Component<CursoProps & RouteComponentProps<{ 
     constructor(props: any) {
         super(props);
         const { cursoId } = this.props.match.params;
+        console.log('cursoId', cursoId)
         this.state = {
             cursoId: cursoId,
             cursoNome: "",
-            listaAtividade: []
+            listaAtividades: [],
+            listaAtiva: false
         }
         this.loadCursoInfo = this.loadCursoInfo.bind(this);
         this.handleCursoInfo = this.handleCursoInfo.bind(this);
+        this.showAtividade = this.showAtividade.bind(this);
     }
 
     // Espera a página carregar para carregar informações
     componentDidMount() {
         this.loadCursoInfo();
     }
+
+    // Mostra a lista de atividades
+    showAtividade() {
+        this.state.listaAtiva ? this.setState({ listaAtiva: false })
+            :
+            this.setState({ listaAtiva: true })
+    }
+
 
     //Busca informações do curso no banco de dados
     loadCursoInfo = async () => {
@@ -42,6 +53,7 @@ export default class Curso extends Component<CursoProps & RouteComponentProps<{ 
             .then(async responseJson => {
 
                 this.handleCursoInfo(responseJson);
+                
             })
             .catch(err => {
 
@@ -51,16 +63,18 @@ export default class Curso extends Component<CursoProps & RouteComponentProps<{ 
 
 
     //Processa informações do curso
-    handleCursoInfo(data: {cursoNome:string, listaAtividades: string[]}) {
+    handleCursoInfo(data: { cursoNome: string, listaAtividades: string[] }) {
         this.setState({
             cursoNome: data.cursoNome,
-            listaAtividade: data.listaAtividades
+            listaAtividades: data.listaAtividades
         })
+        console.log('Curso:',data.listaAtividades)
+
     }
 
     render() {
         const width = window.innerWidth / 2.5;
-        const height = window.innerHeight*0.75;
+        const height = window.innerHeight * 0.75;
         const wrapper = {
             backgroundColor: "#fceca3",
             display: 'flex',
@@ -72,11 +86,17 @@ export default class Curso extends Component<CursoProps & RouteComponentProps<{ 
                 <Header />
                 <div className="d-flex" style={wrapper}>
                     {/* <!-- Sidebar --> */}
-                    <Sidebar cursoNome={this.state.cursoNome}/>
-                    
+
+                    <Sidebar
+                        showAtividade={this.showAtividade}
+                        listaAtividades={this.state.listaAtividades}
+                        listaAtiva={this.state.listaAtiva}
+                        cursoNome={this.state.cursoNome}
+                    />
+
                     <div className='p-4 mr-5'>
 
-                    {/* Calendario */}
+                        {/* Calendario */}
                         <InfiniteCalendar
                             width={width}
                             height={height}

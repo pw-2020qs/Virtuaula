@@ -30,7 +30,7 @@ class App extends React.Component<{}> {
             <PrivateRoute path="/dashboard" exact component={Dashboard} />
             <PrivateRoute path="/perfil" exact component={Perfil} />
             <PrivateRoute path="/curso/:cursoId" component={Curso} />
-            <Route path="/atividade" exact component={Atividade} />
+            <PrivateRoute path="/atividade" exact component={Atividade} />
           </Switch>
           </Router>
       </AuthProvider>

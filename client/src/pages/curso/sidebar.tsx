@@ -1,6 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth';
+import  SidebarAtividades  from './sidebarAtividades'
+
+type SidebarProps = {
+    showAtividade: any,
+    listaAtiva: boolean,
+    cursoNome: string,
+    listaAtividades: string[],
+}
+
 
 
 const SidebarProf = () => {
@@ -30,7 +39,7 @@ const SidebarProf = () => {
     )
 }
 
-const SidebarAluno = () => {
+const SidebarAluno = (props: {showAtividade: any}) => {
 
     return (
         <>
@@ -38,9 +47,9 @@ const SidebarAluno = () => {
                 <i className="fas fa-video mr-2"></i>Assistir Aula
                         </Link>
 
-            <Link to="/" className="list-group-item list-group-item-action">
+            <div  onClick={props.showAtividade} className="list-group-item list-group-item-action">
                 <i className="fas fa-edit mr-2"></i>Atividades
-                        </Link>
+                        </div>
 
         </>
     )
@@ -48,7 +57,7 @@ const SidebarAluno = () => {
 
 
 
-export const Sidebar = (props: { cursoNome: string }) => {
+export const Sidebar = (props: SidebarProps) => {
     const [nome, setNome] = useState(props.cursoNome);
     const { perfil } = useAuth();
     useEffect(() => {
@@ -64,7 +73,10 @@ export const Sidebar = (props: { cursoNome: string }) => {
                 <div className="ml-auto mr-auto sidebar-sticky d-flex flex-column">
                     <ul className="p-4 list-group">
                         <h2 className="m-2 mb-4">{nome}</h2>
-                        {perfil === 'Aluno' ? <SidebarAluno /> : <SidebarProf />}
+                        {props.listaAtiva? <SidebarAtividades listaAtividades={props.listaAtividades}/> : (perfil === 'Aluno' ? <SidebarAluno showAtividade={props.showAtividade} />
+                            :
+                            <SidebarProf />)}
+                            
                     </ul>
                 </div>
             </nav>

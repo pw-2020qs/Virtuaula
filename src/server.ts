@@ -70,7 +70,7 @@ app.get('/api/infocurso', function (req, res) {
       let data = ['Atividade 1', 'Atividade 2', 'Atividade 3'];
       let cursoNome = cursoData[cursoId as keyof cursoData]
       if (data) {
-        res.status(200).send({ cursoNome: cursoNome, listaAtividade: data });
+        res.status(200).send({ cursoNome: cursoNome, listaAtividades: data });
       } else {
         res.status(404).send(); //Informação git do curso não encontrada
       }
