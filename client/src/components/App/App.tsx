@@ -21,16 +21,13 @@ import {
   CSSTransition,
   TransitionGroup
 } from 'react-transition-group';
-import { createBrowserHistory } from "history";
+
+
 
 interface AppProps extends RouteComponentProps<any> {
-
 }
 
-const history = createBrowserHistory();
 class App extends React.Component<AppProps> {
-
-
   render() {
     return (
       <AuthProvider>
@@ -39,7 +36,7 @@ class App extends React.Component<AppProps> {
             <TransitionGroup>
               <CSSTransition
                 in={this.props.match != null}
-                timeout={400}
+                timeout={200}
                 classNames="fade"
                 unmountOnExit
                 key={location.key}

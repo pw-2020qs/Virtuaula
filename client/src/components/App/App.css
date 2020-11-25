@@ -9,19 +9,23 @@
 .fade-enter {
   opacity: 0;
   z-index: 1;
+  transform: scale(0.95);
 }
 
 .fade-appear-active,
 .fade-enter-active {
   opacity: 1;
-  transition: opacity 500ms, linear 150ms;
+  transform: translateX(0);
+  transition: opacity 100ms ease-in 100ms,
+              transform 180ms;
 }
 
 .fade-exit {
   opacity: 1;
+
 }
 
 .fade-exit.fade-exit-active {
   opacity: 0;
-  transition: opacity 200ms, linear;
+  transition: opacity 200ms, ease-out;
 }
