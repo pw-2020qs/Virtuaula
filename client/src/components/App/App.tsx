@@ -14,6 +14,7 @@ import Curso from '../../pages/curso/curso';
 import PrivateRoute from '../PrivateRoute/PrivateRoute';
 import PublicRoute from '../PublicRoute/PublicRoute';
 import { AuthProvider } from '../../context/AuthContext/AuthContext';
+import Lousa from '../../pages/lousa/lousa';
 
 
 
@@ -31,6 +32,7 @@ class App extends React.Component<{}> {
             <PrivateRoute path="/perfil" exact component={Perfil} />
             <PrivateRoute path="/curso/:cursoId" component={Curso} />
             <PrivateRoute path="/atividade" exact component={Atividade} />
+            <PrivateRoute path="/lousa" exact component={Lousa} />
           </Switch>
           </Router>
       </AuthProvider>
