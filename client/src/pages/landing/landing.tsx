@@ -7,7 +7,7 @@ class Landing extends React.Component {
 
     render() {
         return (
-            <div style={{ backgroundColor: "#fceca3", height: "100vh", overflow: "hidden" }}>
+            <div className="page" style={{ backgroundColor: "#fceca3", height: "100vh", overflow: "hidden" }}>
                 <Header />
                 <main className="align-middle" style={{ textAlign: "center" }}>
                     <img src={logo} alt="" />

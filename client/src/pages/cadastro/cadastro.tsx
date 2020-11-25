@@ -22,7 +22,7 @@ export default class Cadastro extends React.Component<CadastroProps, {}>  {
 
     render() {
         return (
-            <div className="row overflow-lg-hidden" style={{ height: "100vh", width: "100vw" }}>
+            <div className="page row overflow-lg-hidden" style={{ height: "100vh", width: "100vw" }}>
                 {/* Implementação do Sidebar com botões de login */}
                 <div className="w-100 h-lg-100 d-flex justify-content-center col-12 col-md-6 border shadow border-dark" style={{ height: "max-content", backgroundColor: "#fceca3" }}>
                     <div className="d-flex justify-content-center w-100">

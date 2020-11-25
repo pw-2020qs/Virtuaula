@@ -32,6 +32,7 @@ export default class Curso extends Component<CursoProps & RouteComponentProps<{ 
 
     // Espera a página carregar para carregar informações
     componentDidMount() {
+        window.scroll(0,0);
         this.loadCursoInfo();
     }
 
@@ -82,7 +83,7 @@ export default class Curso extends Component<CursoProps & RouteComponentProps<{ 
             alignItems: 'stretch'
         }
         return (
-            <div id='curso-wrapper'>
+            <div className="page" id='curso-wrapper'>
                 <Header />
                 <div className="d-flex" style={wrapper}>
                     {/* <!-- Sidebar --> */}
