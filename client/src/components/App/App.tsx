@@ -17,6 +17,7 @@ import EditarAtividade from '../../pages/editar_atividade/editar_atividade';
 import PrivateRoute from '../PrivateRoute/PrivateRoute';
 import PublicRoute from '../PublicRoute/PublicRoute';
 import { AuthProvider } from '../../context/AuthContext/AuthContext';
+import Lousa from '../../pages/lousa/lousa';
 import {
   CSSTransition,
   TransitionGroup
@@ -50,6 +51,7 @@ class App extends React.Component<AppProps> {
                   <PrivateRoute path="/curso/:cursoId" component={Curso} />
                   <PrivateRoute path="/atividade" exact component={Atividade} />
                   <PrivateRoute path="/atividade/nova" exact component={EditarAtividade} />
+                  <PrivateRoute path="/lousa" exact component={Lousa} />
                 </Switch>
               </CSSTransition>
             </TransitionGroup>

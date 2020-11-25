@@ -11,7 +11,6 @@ type SidebarProps = {
 }
 
 
-
 const SidebarProf = () => {
 
     return (
@@ -20,7 +19,7 @@ const SidebarProf = () => {
                 <i className=" mr-2 fas fa-plus-circle"></i>Iniciar Aula
                             </Link>
 
-            <Link to="/" className="list-group-item list-group-item-action">
+            <Link to="/lousa" className="list-group-item list-group-item-action">
                 <i className=" mr-2 fas fa-plus-circle"></i>Nova Lousa
                             </Link>
 
