@@ -11,6 +11,7 @@ import Cadastro from '../../pages/cadastro/cadastro';
 import Atividade from "../../pages/atividade/atividade";
 import Dashboard from '../../pages/dashboard/Dashboard';
 import Curso from '../../pages/curso/curso';
+import EditarAtividade from '../../pages/editar_atividade/editar_atividade';
 import PrivateRoute from '../PrivateRoute/PrivateRoute';
 import PublicRoute from '../PublicRoute/PublicRoute';
 import { AuthProvider } from '../../context/AuthContext/AuthContext';
@@ -31,6 +32,7 @@ class App extends React.Component<{}> {
             <PrivateRoute path="/perfil" exact component={Perfil} />
             <PrivateRoute path="/curso/:cursoId" component={Curso} />
             <PrivateRoute path="/atividade" exact component={Atividade} />
+            <PrivateRoute path="/atividade/nova" exact component={EditarAtividade}/>
           </Switch>
           </Router>
       </AuthProvider>
