@@ -4,9 +4,9 @@
 # Virtuaula - Plataforma de EaD
 
 
-![GitHub release (latest by date including pre-releases)](https://img.shields.io/github/v/release/pw-2020qs/Virtuaula?include_prereleases)  ![GitHub last commit](https://img.shields.io/github/last-commit/pw-2020qs/Virtuaula) ![GitHub issues](https://img.shields.io/github/issues-raw/pw-2020qs/Virtuaula)
-
-![GitHub pull requests](https://img.shields.io/github/issues-pr/pw-2020qs/Virtuaula) ![GitHub All Releases](https://img.shields.io/github/downloads/pw-2020qs/Virtuaula/total) ![GitHub](https://img.shields.io/github/license/pw-2020qs/Virtuaula)
+![GitHub release (latest by date including pre-releases)](https://img.shields.io/github/v/release/pw-2020qs/Virtuaula?include_prereleases) ![GitHub last commit](https://img.shields.io/github/last-commit/pw-2020qs/Virtuaula) 
+![GitHub issues](https://img.shields.io/github/issues-raw/pw-2020qs/Virtuaula) ![GitHub pull requests](https://img.shields.io/github/issues-pr/pw-2020qs/Virtuaula) 
+![GitHub All Releases](https://img.shields.io/github/downloads/pw-2020qs/Virtuaula/total) ![GitHub](https://img.shields.io/github/license/pw-2020qs/Virtuaula)
 
 
 <!-- 
@@ -70,6 +70,8 @@ Roda a aplicação apenas Client Side.
 |   |   |   |   |   |
 
 
+
+
  # Uso 
  [Voltar](#Indice)
 
@@ -82,18 +84,29 @@ Roda a aplicação apenas Client Side.
 4. Na pagina do curso o aluno pode acessar aulas e atividades disponíveis. O professor poderá iniciar novas aulas, criar novas lousas ou gerenciar as atividades do curso.\
 5. O usuário poderá ver e editar as informações do seu perfil na pagina ``/perfil`` que pode ser acessada pela barra de navegação.\
 
+
 <!-- Adicionar informações sobre o uso do App -->
+
+
 
  # Contribuidores 
  [Voltar](#Indice)
 
+
 <!-- Adicionar gerador automatico de imagem dos contribuidores caso o repositório vire público -->
+
 <a href="https://github.com/pw-2020qs/Virtuaula/graphs/contributors">
   <img src="https://contributors-img.web.app/image?repo=pw-2020qs/Virtuaula" />
 </a>
 
+
+
+
+
 # Outras Informações 
 [Voltar](#Indice)
+
+
 
 ## Learn More about Create React App
 
