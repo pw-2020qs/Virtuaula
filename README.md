@@ -9,11 +9,7 @@
 ![GitHub All Releases](https://img.shields.io/github/downloads/pw-2020qs/Virtuaula/total) ![GitHub](https://img.shields.io/github/license/pw-2020qs/Virtuaula)
 
 
-<!-- 
-# Demo
-
-Aqui será adicionado um video ou gif demo do projeto
--->
+<!-- # Demo Aqui será adicionado um video ou gif demo do projeto-->
 
 # Indice
 - [Início](#Virtuaula)
@@ -27,7 +23,7 @@ Aqui será adicionado um video ou gif demo do projeto
  # Instalação 
  [Voltar](#Indice)
 
-
+-->
 ### `npm install`
 
 Instalará as dependências do lado Server.
@@ -42,7 +38,7 @@ Roda o app em modo de desenvolvimento nos lados client e server.<br/>
 De modo default ```create-react-app``` roda o webpack-dev do React na porta [http://localhost:3000](http://localhost:3000), abra o navegador nesta porta para acessar o Client.
 O servidor está configurado para rodar na porta [http://localhost:5000](http//localhost:5000).
 
-O server está configurado para rodar com ```tsc-watch```, portanto alterações serão atualizadas automaticamente.<br />
+O server está configurado para rodar com `tsc-watch`, portanto alterações serão atualizadas automaticamente.<br />
 Erros lint apareceção no console.
 
 
