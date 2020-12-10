@@ -1,5 +1,5 @@
 import React, { useState, useCallback, useEffect, } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth'
 import { RouteComponentProps } from 'react-router-dom';
 
@@ -20,16 +20,23 @@ interface LogInFormProps extends RouteComponentProps {
 
 const LogInForm = (props: LogInFormProps) => {
 
+    const history = useHistory();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [logInError, setLoginError] = useState("");
-    const { signIn } = useAuth();
+    const { user, signOut, signIn, isAuth} = useAuth();
+    
 
-    const handleSignIn = useCallback(() => {
-        signIn();
-        window.location.reload();
+    const handleSignIn = useCallback(async () => {
+        await signIn;
     }, [signIn]);
 
+
+    const setUser = (user: user) => {
+        sessionStorage.setItem('@virtuaula/email', user.email);
+        sessionStorage.setItem('@virtuaula/user', user.user);
+        sessionStorage.setItem('@virtuaula/perfil', user.perfil);
+      }
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
 
         e.preventDefault();
@@ -46,22 +53,34 @@ const LogInForm = (props: LogInFormProps) => {
         }).then(async response => response.json()
         )
             .then(async response => {
-                props.handleSuccessfulAuth(await response);
-                handleSignIn();
+                // props.handleSuccessfulAuth(await response);
+                setUser(response);
+                 handleSignIn();
+
 
             })
             .catch(err => {
                 setLoginError(err);
-                console.log("Erro de Login", err);
             })
     };
 
-    useEffect(() => { 
+    useEffect(() => {
 
-        console.log(logInError);
+        alert(logInError);
+
 
         setLoginError("");
     }, [logInError])
+
+
+    useEffect(()=> {
+        
+        console.log(`isAuth mudou é ${isAuth? 'true': 'false'}`)
+
+        if(isAuth)
+            history.push("/dashboard");
+
+    }, [isAuth])
 
     return (
         <form onSubmit={handleSubmit}>

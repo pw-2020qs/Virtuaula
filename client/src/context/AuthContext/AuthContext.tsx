@@ -63,7 +63,7 @@ export const AuthProvider = ({ children }: Props) => {
         setUser("");
         setEmail("");
         setPerfil("");
-    },[]);
+    },[storageUser, storageEmail, storagePerfil]);
 
 
     return (
