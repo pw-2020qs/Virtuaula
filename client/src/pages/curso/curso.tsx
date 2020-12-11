@@ -1,60 +1,42 @@
-import React, { Component } from 'react';
-import { RouteComponentProps } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
 import Header from '../../components/Header/Header';
 import { Sidebar } from './sidebar'
 import InfiniteCalendar from 'react-infinite-calendar'
 import 'react-infinite-calendar/styles.css'
 import './curso.css'
+import useAuth from '../../hooks/useAuth';
 
-type CursoState = {
-    cursoId: string;
-    cursoNome: string,
-    listaAtividades: string[],
-    listaAtiva: boolean
-};
-type CursoProps = {};
 
-export default class Curso extends Component<CursoProps & RouteComponentProps<{ cursoId: string }>, CursoState> {
-    constructor(props: any) {
-        super(props);
-        const { cursoId } = this.props.match.params;
-        console.log('cursoId', cursoId)
-        this.state = {
-            cursoId: cursoId,
-            cursoNome: "",
-            listaAtividades: [],
-            listaAtiva: false
-        }
-        this.loadCursoInfo = this.loadCursoInfo.bind(this);
-        this.handleCursoInfo = this.handleCursoInfo.bind(this);
-        this.showAtividade = this.showAtividade.bind(this);
-    }
 
-    // Espera a página carregar para carregar informações
-    componentDidMount() {
-        window.scroll(0,0);
-        this.loadCursoInfo();
-    }
+const Curso = (props: any) => {
+    const { cursoId } = props.match.params;
+    const [cursoNome, setCursoNome] = useState<string>('')
+    const [listaAtividades, setListaAtividades] = useState<string[]>([])
+    const [listaAtiva, setListaAtiva] = useState<boolean>(false)
+    const { token } = useAuth()
+
 
     // Mostra a lista de atividades
-    showAtividade() {
-        this.state.listaAtiva ? this.setState({ listaAtiva: false })
+    const showAtividade = () => {
+        listaAtiva ? setListaAtiva(false)
             :
-            this.setState({ listaAtiva: true })
+            setListaAtiva(true)
     }
 
-
     //Busca informações do curso no banco de dados
-    loadCursoInfo = async () => {
-        let cursoId = this.state.cursoId;
-        await fetch(`/api/infocurso?id=${cursoId}`).then(async response => {
+    const loadCursoInfo = async () => {
+        await fetch(`/api/infocurso?id=${cursoId}`, {
+            headers: {
+                'Authorization': `Bearer ${token}`,
+            },
+        }).then(async response => {
 
             return await response.json();
         })
             .then(async responseJson => {
 
-                this.handleCursoInfo(responseJson);
-                
+                handleCursoInfo(responseJson);
+
             })
             .catch(err => {
 
@@ -62,61 +44,65 @@ export default class Curso extends Component<CursoProps & RouteComponentProps<{ 
             })
     }
 
+    // Espera a página carregar para carregar informações
+    useEffect(() => {
+        loadCursoInfo()
+    }, [])
+
 
     //Processa informações do curso
-    handleCursoInfo(data: { cursoNome: string, listaAtividades: string[] }) {
-        this.setState({
-            cursoNome: data.cursoNome,
-            listaAtividades: data.listaAtividades
-        })
-        console.log('Curso:',data.listaAtividades)
+    const handleCursoInfo = (data: { cursoNome: string, listaAtividades: string[] }) => {
+
+        setCursoNome(data.cursoNome)
+        setListaAtividades(data.listaAtividades)
+
+        console.log('Curso:', data.listaAtividades)
 
     }
 
-    render() {
-        const width = window.innerWidth / 2.5;
-        const height = window.innerHeight * 0.75;
-        const wrapper = {
-            backgroundColor: "#fceca3",
-            display: 'flex',
-            width: '100%',
-            alignItems: 'stretch'
-        }
-        return (
-            <div className="page" id='curso-wrapper'>
-                <Header />
-                <div className="d-flex" style={wrapper}>
-                    {/* <!-- Sidebar --> */}
+    const width = window.innerWidth / 2.5;
+    const height = window.innerHeight * 0.75;
+    const wrapper = {
+        backgroundColor: "#fceca3",
+        display: 'flex',
+        width: '100%',
+        alignItems: 'stretch'
+    }
 
-                    <Sidebar
-                        showAtividade={this.showAtividade}
-                        listaAtividades={this.state.listaAtividades}
-                        listaAtiva={this.state.listaAtiva}
-                        cursoNome={this.state.cursoNome}
+    return (
+        <div className="page" id='curso-wrapper' >
+            <Header />
+            <div className="d-flex" style={wrapper}>
+                {/* <!-- Sidebar --> */}
+
+                <Sidebar
+                    showAtividade={showAtividade}
+                    listaAtividades={listaAtividades}
+                    listaAtiva={listaAtiva}
+                    cursoNome={cursoNome}
+                />
+
+                <div className='p-4 mr-5'>
+
+                    {/* Calendario */}
+                    <InfiniteCalendar
+                        width={width}
+                        height={height}
+                        theme=
+                        {{
+                            headerColor: '#f7914D',
+                            selectionColor: '#f7914D',
+                            weekdayColor: '#f7914D',
+                            floatingNav: {
+                                background: '#fceca3',
+                            }
+                        }}
                     />
-
-                    <div className='p-4 mr-5'>
-
-                        {/* Calendario */}
-                        <InfiniteCalendar
-                            width={width}
-                            height={height}
-                            theme=
-                            {{
-                                headerColor: '#f7914D',
-                                selectionColor: '#f7914D',
-                                weekdayColor: '#f7914D',
-                                floatingNav: {
-                                    background: '#fceca3',
-                                }
-                            }}
-
-                        />
-                    </div>
                 </div>
-            </div >
-
-        )
-    }
-
+            </div>
+        </div >
+    )
 }
+
+export default Curso;
+

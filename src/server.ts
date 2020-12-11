@@ -1,6 +1,13 @@
 import express = require('express');
-import { type } from 'os';
-import { string } from 'prop-types';
+import jwt from 'jsonwebtoken'
+
+// Carregamento da interface com o Banco de Dados
+import * as users from './models/users'
+import { config } from './config';
+
+
+const AUTH_CONFIG = config['secret']
+
 const bodyParser = require('body-parser');
 const path = require('path');
 
@@ -10,91 +17,28 @@ const port = process.env.PORT || 5000;
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-type user = {
-  email: string,
-  user: string,
-  perfil: string
-}
-
-type cursoData = {
-  programacaoweb: string, 
-  teoriagrafos: string, 
-  compiladores: string
-}
+//Funções Auxiliares
 
 
-//Implementação do servidor para front-end de produção
 
-app.post('/api/login', function (req, res) {
+//Implementação das rotas do servidor
 
-
-  //Fazer Autorização utilizando o  banco de dados 
-  const email = req.body.email;
-  const password = req.body.password;
-  let perfil = "";
-  let user = "";
-
-  if (email == 'usuario1@teste.com') {
-    // Login autorizado Aluno
-    perfil = "Aluno";
-    user = "Usuario Aluno";
-
-  } else if (email == 'usuario2@teste.com') {
-    // Login autorizado Professor
-    perfil = "Professor";
-    user = "Usuario Professor";
-
-  } else {
-    // Login não autorizado.
-    return res.status(401).send();
-
-  }
-  let data: user = {
-    user,
-    email,
-    perfil
-  }
-  res.status(200).send(data);
-})
+//Rota de autorização
+const authRouter = require('./routers/authRouter')
+app.use('/api/login', authRouter)
 
 
-app.get('/api/infocurso', function (req, res) {
+// Rotas de data Fetch
+// Adicionar o AuthMiddleware em todo router de data fetching
+// const AuthMiddleware = require('../middlewares/AuthMiddleware')
+// app.use( AuthMiddleware)
 
-  try {
-    if (req.query.id) {
-      const cursoId = <string>req.query.id;
-      console.log('Enviando info do curso:', cursoId);
-
-      //Procurar Informações do Curso no Banco de dados
-      const cursoData: cursoData = { programacaoweb: 'Programação para Web', teoriagrafos: 'Teoria dos Grafos', compiladores: 'Compiladores' }
-      let data = ['Atividade 1', 'Atividade 2', 'Atividade 3'];
-      let cursoNome = cursoData[cursoId as keyof cursoData]
-      if (data) {
-        res.status(200).send({ cursoNome: cursoNome, listaAtividades: data });
-      } else {
-        res.status(404).send(); //Informação git do curso não encontrada
-      }
-    }
-  } catch (err) {
-    res.status(500).json({ err: err });
-  }
-})
-
-app.post('/api/cadastro', function (req, res) {
-
-  //Fazer Novo registro no  banco de dados 
-  console.log("Cadastrado no Servidor", req.body);
-
-  if (req.body.password == req.body.passwordConf) {
-    res.status(201).send(req.body); // Confirmação novo cadastro
-  } else {
-    res.status(400).send('Por favor verifique sua senha'); // Erro no Cadastro
-  }
-})
+//Data Fetching da info do curso
+const cursoRouter = require('./routers/cursoRouter')
+app.use('/api/infocurso', cursoRouter)
 
 
-//Implementação do servidor para front-end de produção
-
+//Inicialização do servidor 
 if (process.env.NODE_ENV === 'production') {
   // Serve all static files
   app.use(express.static(path.join(__dirname, 'client')));
@@ -105,4 +49,29 @@ if (process.env.NODE_ENV === 'production') {
   });
 }
 
-app.listen(port, () => console.log(`Listening on port ${port}`));
+
+/*
+Processos para executar o salvamento 
+Automático após o fechamento do servidor
+*/
+process.once('exit', (code) => {
+  console.log(`Server exiting with code ${code}...`)
+  users.saveFile()
+  console.log(`Server exited`)
+})
+
+function exitHandler() {
+  process.exit()
+}
+
+process.once("SIGINT", exitHandler)
+process.once("SIGUSR2", exitHandler)
+
+
+
+
+//Levantament do Servidor
+app.listen(port, () => {
+  users.loadFile()
+  console.log(`Listening on port ${port}`)
+});

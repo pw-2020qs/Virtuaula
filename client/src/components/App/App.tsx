@@ -16,7 +16,7 @@ import Curso from '../../pages/curso/curso';
 import EditarAtividade from '../../pages/editar_atividade/editar_atividade';
 import PrivateRoute from '../PrivateRoute/PrivateRoute';
 import PublicRoute from '../PublicRoute/PublicRoute';
-import { AuthProvider } from '../../context/AuthContext/AuthContext';
+import {AuthProvider} from '../../context/authContext'
 import Lousa from '../../pages/lousa/lousa';
 import {
   CSSTransition,

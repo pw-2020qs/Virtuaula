@@ -1,8 +1,10 @@
 import { useState, useEffect, Dispatch, SetStateAction } from 'react'
 
-type Response<T> = [T, Dispatch<SetStateAction<T>>]
+// Erro vinculado ao ESlint, necessário fazer upgrade do REACT um ejetar o projeto
+// type Response<T> = [T, Dispatch<SetStateAction<T>>]
 
-function useLocalStorage<T>(key: string, initialState: T): Response<T> {
+   // Checagem após o page refresh se ha um usuário logado
+function useLocalStorage<T>(key: string, initialState: T)/*: Response<T>*/ {
   const [state, setState] = useState(() => {
     const storageValue = localStorage.getItem(key)
 

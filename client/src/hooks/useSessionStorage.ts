@@ -1,11 +1,16 @@
-import { useState, useEffect, SetStateAction, Dispatch } from 'react';
+import { useState, useEffect, Dispatch, SetStateAction } from 'react'
 
-type Response<T> = [T, Dispatch<SetStateAction<T>>]
+// Erro vinculado ao ESlint, necessário fazer upgrade do REACT um ejetar o projeto
+// type Response<T> = [T, Dispatch<SetStateAction<T>>]
 
-function useSessionStorage<T>(key: string, defaultValue: T): Response<T> {
+   // Checagem após o page refresh se ha um usuário logado
+function useSessionStorage<T>(key: string, defaultValue: T) /*: Response<T>*/ {
+
+    console.log('useSessionStorage', key)
+    console.log('Login',defaultValue)
     const [state, setState] = useState(() => {
         const storageValue = sessionStorage.getItem(key)
-
+        console.log('storageValue', storageValue)
         if (storageValue) {
             return JSON.parse(storageValue)
         } else {

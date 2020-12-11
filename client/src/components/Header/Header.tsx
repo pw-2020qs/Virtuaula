@@ -5,8 +5,9 @@ import useAuth from '../../hooks/useAuth';
 import './Header.css'
 
 export default function Header() {
-    const { user, signOut } = useAuth();
-
+    const { signOut } = useAuth();
+    const userName = 'teste'
+    // const {name} = useUserContext();
     
 
     return (
@@ -19,12 +20,10 @@ export default function Header() {
                     <div className="nav-link  dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Cursos
                     </div>
-
                     {/* Cursos */}
-
                 </div>
                 <div className="nav-item btn-group">
-                    <Link to="/dashboard" type="button" className="btn">{user}</Link>
+                    <Link to="/dashboard" type="button" className="btn">{userName}</Link>
                     <button type="button" className="btn dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <span className="sr-only">Toggle Dropdown</span>
                     </button>
