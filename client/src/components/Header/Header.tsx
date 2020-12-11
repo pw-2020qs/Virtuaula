@@ -5,9 +5,8 @@ import useAuth from '../../hooks/useAuth';
 import './Header.css'
 
 export default function Header() {
-    const { signOut } = useAuth();
-    const userName = 'teste'
-    // const {name} = useUserContext();
+    const { signOut, user } = useAuth();
+    const {userName} = user
     
 
     return (

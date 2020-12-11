@@ -2,39 +2,51 @@ import React, { createContext, useEffect } from 'react';
 import useSessionStorage from '../../hooks/useSessionStorage';
 import { KEY_STORAGE_LOGIN } from '../../constants/storage';
 
-type ContextValue = {
-    isAuth: boolean,
-    setIsAuth: any,
-    user: {},
-    signIn: any,
-    signOut: any,
-};
-
 
 type UserInfo = {
-    username: string
+    email: string,
+    perfil: string,
+    institution: string,
+    userName: string,
+    secondName: string
+}
+type AuthUser = {
+    user: UserInfo
     token: string
 }
 
-const userInitial: UserInfo = {
-    username: '',
+const userInitial: AuthUser = {
+    user: {
+        email: '',
+        perfil: '',
+        institution: '',
+        userName: '',
+        secondName: '',
+    },
     token: ''
 }
 
-//Inicialização do Contexto de Autenticação
-const AuthContext = createContext<ContextValue | any>(void 0);
+type ContextValue = AuthUser & {
+    isAuth: boolean,
+    signOut: any,
+    signIn: any,
+    signOn: any,
+}
 
+
+//Inicialização do Contexto de Autenticação
+const AuthContext = createContext<ContextValue>({} as ContextValue);
+
+//Inicialização do ContextoProvider de Autenticação
 const AuthProvider: React.FC = ({ children }) => {
 
-    const [login, setlogin] = useSessionStorage<UserInfo>(KEY_STORAGE_LOGIN, userInitial);
+    const [login, setlogin] = useSessionStorage<AuthUser>(KEY_STORAGE_LOGIN, userInitial);
 
 
     // Validação do Token
     const validadeToken = () => {
 
     }
-
-
 
     //Checagem Automatica da Validade do Token
     useEffect(() => {
@@ -67,14 +79,8 @@ const AuthProvider: React.FC = ({ children }) => {
             })
     };
 
-
-
-
-
     // Cadastro do Usuário
     const signOn = async (newUser: any) => {
-
-
         console.log(newUser)
         await fetch('/api/login/cadastro', {
             method: 'POST',
@@ -92,17 +98,11 @@ const AuthProvider: React.FC = ({ children }) => {
                 console.log("Erro de Login", err.status);
                 alert(err.message)
             })
-
-
-
     }
 
     //Logoff do usuário
     const signOut = () => {
-
         setlogin(userInitial)
-
-
     };
 
 
@@ -112,13 +112,13 @@ const AuthProvider: React.FC = ({ children }) => {
             token: login?.token,
             signIn,
             signOut,
-            signOn
+            signOn,
+            user: login.user
         }}>
             { children}
         </AuthContext.Provider>
     )
 }
-
 
 
 export { AuthContext, AuthProvider }

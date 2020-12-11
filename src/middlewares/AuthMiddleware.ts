@@ -6,9 +6,6 @@ interface AuthRequest extends Request {
     userId: number
 }
 
-
-
-
 function AuthMiddleware (req: AuthRequest, res: Response, next: NextFunction) {
 
     const authHeader = req.headers.authorization;

@@ -1,14 +1,20 @@
 import express = require('express');
 import jwt from 'jsonwebtoken'
 import { config } from '../config';
+import bcrypt, { hash } from 'bcrypt';
 
 // Carregamento da interface com o Banco de Dados
 import * as users from '../models/users'
-import bcrypt, { hash } from 'bcrypt';
 
-
-type authUser = {
+type UserInfo = {
     email: string,
+    perfil: string,
+    institution: string,
+    userName: string,
+    secondName: string
+}
+type authUser = {
+    user: UserInfo
     token: string
 }
 
@@ -55,9 +61,21 @@ authRouter.post('/', async function async(req, res) {
     // if (user?.password !== password)
 
     password = "";
+    const {
+        perfil,
+        institution,
+        userName,
+        secondName,
+    } = <users.User>user
 
     let data: authUser = {
-        email,
+        user: {
+            email,
+            perfil,
+            institution,
+            userName,
+            secondName,
+        },
         token: generateTokens({ id: user!.id }),
     }
     res.status(200).send(data);
@@ -77,8 +95,21 @@ authRouter.post('/cadastro', async function (req, res) {
         const newUser: users.User = await createUser(req.body)
         users.model.push(newUser)
 
+        const {
+            perfil,
+            institution,
+            userName,
+            secondName,
+        } = <users.User>newUser
+    
         let data: authUser = {
-            email,
+            user: {
+                email,
+                perfil,
+                institution,
+                userName,
+                secondName,
+            },
             token: generateTokens({ id: newUser.id }),
         }
         res.status(200).send(data);

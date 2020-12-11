@@ -61,9 +61,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var express = require("express");
 var jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 var config_1 = require("../config");
+var bcrypt_1 = __importStar(require("bcrypt"));
 // Carregamento da interface com o Banco de Dados
 var users = __importStar(require("../models/users"));
-var bcrypt_1 = __importStar(require("bcrypt"));
 var AUTH_CONFIG = config_1.config['secret'];
 var authRouter = express.Router();
 //Funções Auxiliares
@@ -97,9 +97,9 @@ function createUser(NewItem) {
 }
 authRouter.post('/', function async(req, res) {
     return __awaiter(this, void 0, void 0, function () {
-        var email, password, user, data;
-        return __generator(this, function (_a) {
-            switch (_a.label) {
+        var email, password, user, _a, perfil, institution, userName, secondName, data;
+        return __generator(this, function (_b) {
+            switch (_b.label) {
                 case 0:
                     email = req.body.email;
                     password = req.body.password;
@@ -109,12 +109,19 @@ authRouter.post('/', function async(req, res) {
                     return [4 /*yield*/, bcrypt_1.default.compare(password, user.password)];
                 case 1:
                     //Comparando a senha
-                    if (!(_a.sent()))
+                    if (!(_b.sent()))
                         res.status(401).send({ error: 'senha incorreta' });
                     // if (user?.password !== password)
                     password = "";
+                    _a = user, perfil = _a.perfil, institution = _a.institution, userName = _a.userName, secondName = _a.secondName;
                     data = {
-                        email: email,
+                        user: {
+                            email: email,
+                            perfil: perfil,
+                            institution: institution,
+                            userName: userName,
+                            secondName: secondName,
+                        },
                         token: generateTokens({ id: user.id }),
                     };
                     res.status(200).send(data);
@@ -126,29 +133,36 @@ authRouter.post('/', function async(req, res) {
 //Fazer Novo registro no  banco de dados 
 authRouter.post('/cadastro', function (req, res) {
     return __awaiter(this, void 0, void 0, function () {
-        var email, password, newUser, data, err_1;
-        return __generator(this, function (_a) {
-            switch (_a.label) {
+        var email, password, newUser, _a, perfil, institution, userName, secondName, data, err_1;
+        return __generator(this, function (_b) {
+            switch (_b.label) {
                 case 0:
                     email = req.body.email;
                     password = req.body.password;
-                    _a.label = 1;
+                    _b.label = 1;
                 case 1:
-                    _a.trys.push([1, 3, , 4]);
+                    _b.trys.push([1, 3, , 4]);
                     if (users.model.find(function (element) { return element.email === email; }))
                         return [2 /*return*/, res.status(400).send({ error: 'Usuário já registrado' })];
                     return [4 /*yield*/, createUser(req.body)];
                 case 2:
-                    newUser = _a.sent();
+                    newUser = _b.sent();
                     users.model.push(newUser);
+                    _a = newUser, perfil = _a.perfil, institution = _a.institution, userName = _a.userName, secondName = _a.secondName;
                     data = {
-                        email: email,
+                        user: {
+                            email: email,
+                            perfil: perfil,
+                            institution: institution,
+                            userName: userName,
+                            secondName: secondName,
+                        },
                         token: generateTokens({ id: newUser.id }),
                     };
                     res.status(200).send(data);
                     return [3 /*break*/, 4];
                 case 3:
-                    err_1 = _a.sent();
+                    err_1 = _b.sent();
                     return [2 /*return*/, res.status(400).send({ error: 'Falha no registro de novo usuário' })];
                 case 4:
                     if (req.body.password === req.body.passwordConf) {

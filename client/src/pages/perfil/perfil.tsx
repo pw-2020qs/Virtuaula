@@ -5,7 +5,12 @@ import useAuth from '../../hooks/useAuth';
 import './perfil.css'
 
 export default function Perfil() {
-    const { user, email, perfil } = useAuth();
+    const { user } = useAuth();
+    const { email,
+        perfil,
+        institution,
+        userName,
+        secondName } = user
     const currentTime = new Date();
     const today = currentTime.toString()
     return (
@@ -15,7 +20,7 @@ export default function Perfil() {
                 <div className='d-flex'>
                     <div className=' ml-2 w-100 h-2'>
                         <div className="m-3 mr-4 pl-4 p-2 border bg-light">
-                            <h1>{user}</h1>
+                            <h1>{userName}</h1>
                             <span>Perfil</span>
                         </div>
                         <div className='row justify-content-center m-2'>
@@ -23,13 +28,13 @@ export default function Perfil() {
                                 <h3>Detalhes do Usuário</h3>
                                 <dl>
                                     <dt>Nome</dt>
-                                    <dd>{user}</dd>
+                                    <dd>{`${userName} ${secondName}`}</dd>
                                     <dt>login</dt>
-                                    <dd>{user === 'Usuario Aluno' ? 'usuario1' : 'usuario2'}</dd>
+                                    <dd>{email}</dd>
                                     <dt>Endereço de email</dt>
                                     <dd>{email}</dd>
-                                    {perfil === 'Aluno' ? <><dt>RA</dt> <dd>12043417</dd>
-                                    </> : <><dt>Registro</dt> <dd>263527</dd></>}
+                                    {/* {perfil === 'Aluno' ? <><dt>RA</dt> <dd>12043417</dd>
+                                    </> : <><dt>Registro</dt> <dd>263527</dd></>} */}
                                     <dt>Perfil</dt>
                                     <dd>{perfil}</dd>
                                 </dl>

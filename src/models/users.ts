@@ -1,7 +1,6 @@
 import * as fs from "fs"
 import { config } from "../config"
 
-
 export interface NewItem {
     email: string,
     perfil: string,
@@ -10,7 +9,6 @@ export interface NewItem {
     secondName: string
     password: string
 }
-
 export interface User extends NewItem {
     id: number
 }
