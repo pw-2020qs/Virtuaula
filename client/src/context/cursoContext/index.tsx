@@ -1,7 +1,5 @@
 import React, { createContext} from 'react'
 
-
-
 type DataValue = {
 
 }
@@ -14,10 +12,10 @@ type ContextValue = DataValue & {
 
 }
 
-//Inicialização do Contexto do curso
+//Inicialização do Contexto do user
 const CursoContext = createContext<ContextValue>({} as ContextValue)
 
-// Inicialização do Context Provider do curso
+// Inicialização do Context Provider do user
 const CursoProvider: React.FC = ({ children }) => {
 
 

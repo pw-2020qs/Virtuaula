@@ -57,8 +57,6 @@ const AuthProvider: React.FC = ({ children }) => {
 
     //Login do Usuário
     const signIn = (email: string, password: string) => {
-        console.log('email', email)
-        console.log('password', password)
         fetch('/api/login', {
             method: 'POST',
             headers: {
@@ -71,7 +69,6 @@ const AuthProvider: React.FC = ({ children }) => {
         }).then(response => response.json()
         )
             .then(async ResponseJson => {
-                console.log('Resposta Json', ResponseJson)
                 setlogin(ResponseJson)
             })
             .catch(err => {
@@ -81,7 +78,7 @@ const AuthProvider: React.FC = ({ children }) => {
 
     // Cadastro do Usuário
     const signOn = async (newUser: any) => {
-        console.log(newUser)
+
         await fetch('/api/login/cadastro', {
             method: 'POST',
             headers: {
@@ -91,7 +88,6 @@ const AuthProvider: React.FC = ({ children }) => {
         }).then(response => response.json()
         )
             .then(async ResponseJson => {
-                console.log('Resposta Json', ResponseJson)
                 setlogin(ResponseJson)
             })
             .catch(err => {

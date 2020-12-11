@@ -1,28 +1,13 @@
 import React, { useState } from 'react';
-import { Link, useHistory } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth'
 
 
-type CadastroFormState = {
-    name: string,
-    lastName: string,
-    email: string,
-    profile: string,
-    university: string,
-    password: string,
-    passwordConf: string,
-    loginError: string
-}
 
-type CadastroFormProps = {
-    handleSuccessfulRegister: (data: string) => void
-}
 
 
 
 const CadastroForm: React.FC = () => {
 
-    const history = useHistory();
     const [email, setEmail] = useState("");
     const [userName, setUserName] = useState("");
     const [lastName, setLastName] = useState("");
@@ -30,7 +15,7 @@ const CadastroForm: React.FC = () => {
     const [university, setUniversity] = useState("");
     const [password, setPassword] = useState("");
     const [passwordConf, setPasswordConf] = useState("");
-    const [logInError, setLoginError] = useState("");
+    const [, setLoginError] = useState("");
     const { signOn } = useAuth();
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {

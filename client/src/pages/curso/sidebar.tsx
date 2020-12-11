@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import useAuth from '../../hooks/useAuth';
-import  SidebarAtividades  from './sidebarAtividades'
+import useUser from '../../hooks/useUser';
+import SidebarAtividades from './sidebarAtividades'
 
 type SidebarProps = {
     showAtividade: any,
@@ -38,7 +38,7 @@ const SidebarProf = () => {
     )
 }
 
-const SidebarAluno = (props: {showAtividade: any}) => {
+const SidebarAluno = (props: { showAtividade: any }) => {
 
     return (
         <>
@@ -46,7 +46,7 @@ const SidebarAluno = (props: {showAtividade: any}) => {
                 <i className="fas fa-video mr-2"></i>Assistir Aula
                         </Link>
 
-            <div  onClick={props.showAtividade} className="list-group-item list-group-item-action">
+            <div onClick={props.showAtividade} className="list-group-item list-group-item-action">
                 <i className="fas fa-edit mr-2"></i>Atividades
                         </div>
 
@@ -58,12 +58,11 @@ const SidebarAluno = (props: {showAtividade: any}) => {
 
 export const Sidebar = (props: SidebarProps) => {
     const [nome, setNome] = useState(props.cursoNome);
-    const { perfil } = useAuth();
+    const { userInfo } = useUser();
+    const { perfil } = userInfo;
     useEffect(() => {
 
-        console.log('antes de setNome', props)
         setNome(props.cursoNome)
-        console.log('depois de setNome', props)
     }, [props])
 
     return (
@@ -72,10 +71,10 @@ export const Sidebar = (props: SidebarProps) => {
                 <div className="ml-auto mr-auto sidebar-sticky d-flex flex-column">
                     <ul className="p-4 list-group">
                         <h2 className="m-2 mb-4">{nome}</h2>
-                        {props.listaAtiva? <SidebarAtividades listaAtividades={props.listaAtividades}/> : (perfil === 'Aluno' ? <SidebarAluno showAtividade={props.showAtividade} />
+                        {props.listaAtiva ? <SidebarAtividades listaAtividades={props.listaAtividades} /> : (perfil === 'Aluno' ? <SidebarAluno showAtividade={props.showAtividade} />
                             :
                             <SidebarProf />)}
-                            
+
                     </ul>
                 </div>
             </nav>

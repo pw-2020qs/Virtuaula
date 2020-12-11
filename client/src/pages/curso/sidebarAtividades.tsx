@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, {  } from 'react';
 import ListaAtividades from '../../components/ListaAtividade/listaAtividade';
 
 type CursoProps = {
@@ -9,7 +8,6 @@ type CursoProps = {
 
 export default function SidebarAtividades(props: CursoProps) {
 
-    console.log('SidebarAtividades', props.listaAtividades)
     return (
         <>
             <ListaAtividades listaAtividades={props.listaAtividades} />

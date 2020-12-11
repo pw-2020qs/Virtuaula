@@ -6,11 +6,8 @@ import { useState, useEffect, Dispatch, SetStateAction } from 'react'
    // Checagem após o page refresh se ha um usuário logado
 function useSessionStorage<T>(key: string, defaultValue: T) /*: Response<T>*/ {
 
-    console.log('useSessionStorage', key)
-    console.log('Login',defaultValue)
     const [state, setState] = useState(() => {
         const storageValue = sessionStorage.getItem(key)
-        console.log('storageValue', storageValue)
         if (storageValue) {
             return JSON.parse(storageValue)
         } else {

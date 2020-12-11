@@ -4,7 +4,6 @@ import {
   BrowserRouter as Router,
   Route,
   Switch,
-  RouteComponentProps,
 } from 'react-router-dom';
 import Landing from '../../pages/landing/landing';
 import Perfil from '../../pages/perfil/perfil';
@@ -22,6 +21,7 @@ import {
   CSSTransition,
   TransitionGroup
 } from 'react-transition-group';
+import { UserProvider } from '../../context/userContext';
 
 
 
@@ -44,12 +44,18 @@ class App extends React.Component {
                   <PublicRoute path="/" exact component={Landing} />
                   <PublicRoute path="/login" exact component={logIn} />
                   <PublicRoute path="/logIn/cadastro" exact component={Cadastro} />
-                  <PrivateRoute path="/perfil" exact component={Perfil} />
-                  <PrivateRoute path="/dashboard" exact component={Dashboard} />
-                  <PrivateRoute path="/curso/:cursoId" component={Curso} />
-                  <PrivateRoute path="/atividade" exact component={Atividade} />
-                  <PrivateRoute path="/atividade/nova" exact component={EditarAtividade} />
-                  <PrivateRoute path="/lousa" exact component={Lousa} />
+                  <Route>
+                  <UserProvider>
+                      <Switch>
+                        <PrivateRoute path="/perfil" exact component={Perfil} />
+                        <PrivateRoute path="/dashboard" exact component={Dashboard} />
+                        <PrivateRoute path="/curso/:cursoId" component={Curso} />
+                        <PrivateRoute path="/atividade" exact component={Atividade} />
+                        <PrivateRoute path="/atividade/nova" exact component={EditarAtividade} />
+                        <PrivateRoute path="/lousa" exact component={Lousa} />
+                      </Switch>
+                  </UserProvider>
+                  </Route>
                 </Switch>
               </CSSTransition>
             </TransitionGroup>

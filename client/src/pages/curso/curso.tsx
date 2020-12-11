@@ -47,7 +47,7 @@ const Curso = (props: any) => {
     // Espera a página carregar para carregar informações
     useEffect(() => {
         loadCursoInfo()
-    }, [])
+    },[])
 
 
     //Processa informações do curso
@@ -56,7 +56,6 @@ const Curso = (props: any) => {
         setCursoNome(data.cursoNome)
         setListaAtividades(data.listaAtividades)
 
-        console.log('Curso:', data.listaAtividades)
 
     }
 

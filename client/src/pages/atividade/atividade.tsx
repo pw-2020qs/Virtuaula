@@ -1,5 +1,5 @@
 import React from 'react'
-import {Atividade as ComponenteAtividade, TipoAtividade} from './../../components/Atividade/Atividade'
+import {TipoAtividade} from './../../components/Atividade/Atividade'
 import {Questao, TipoQuestao} from './../../components/Questao/Questao'
 import { Header_landing as Header } from '../../components/Header_landing/Header_landing'
 
@@ -26,7 +26,7 @@ export default class Atividade extends React.Component{
         return(
             <div className="page">
                 <Header/>
-                {atividadeExemplo.questoes.map((questao, index) =>{
+                {atividadeExemplo.questoes.map((questao) =>{
                     return(
                         <Questao 
                             enunciado={questao.enunciado}

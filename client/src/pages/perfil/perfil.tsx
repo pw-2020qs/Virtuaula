@@ -2,15 +2,19 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Header from '../../components/Header/Header';
 import useAuth from '../../hooks/useAuth';
+import useUser from '../../hooks/useUser';
 import './perfil.css'
 
 export default function Perfil() {
+    const { userInfo } = useUser()
+
     const { user } = useAuth();
-    const { email,
-        perfil,
+    const { email } = user
+    const { perfil,
         institution,
         userName,
-        secondName } = user
+        secondName,
+        classes } = userInfo
     const currentTime = new Date();
     const today = currentTime.toString()
     return (
@@ -33,10 +37,10 @@ export default function Perfil() {
                                     <dd>{email}</dd>
                                     <dt>Endereço de email</dt>
                                     <dd>{email}</dd>
-                                    {/* {perfil === 'Aluno' ? <><dt>RA</dt> <dd>12043417</dd>
-                                    </> : <><dt>Registro</dt> <dd>263527</dd></>} */}
                                     <dt>Perfil</dt>
                                     <dd>{perfil}</dd>
+                                    <dt>Instituição</dt>
+                                    <dd>{institution}</dd>
                                 </dl>
                             </div>
                             <div className='col'>
@@ -55,9 +59,12 @@ export default function Perfil() {
                                     <h3>Detalhes dos cursos</h3>
                                     <dl>
                                         <dt>Cursos Inscritos</dt>
-                                        <Link to='curso/programacaoweb'><dd>Programação Web</dd></Link>
-                                        <Link to='curso/teoriagrafos'><dd>Teoria dos grafos</dd></Link>
-                                        <Link to='curso/compiladores'><dd>Compiladores</dd></Link>
+                                        {classes.map((item, i) => {
+                                            return (
+                                                <Link key={i} to={`curso/${item}`}><dd key={i * 2}>{item}</dd></Link>
+                                            )
+                                        }
+                                        )}
                                     </dl>
                                 </div>
                             </div>
